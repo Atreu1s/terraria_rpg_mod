@@ -15,7 +15,6 @@
   <img src="https://img.shields.io/badge/Multiplayer-ready-5cc461?style=for-the-badge"/>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/🧪_Status-alpha-000000?style=flat-square"/>
   <img src="https://img.shields.io/badge/🌍_Languages-RU_%7C_EN-000000?style=flat-square"/>
   <img src="https://img.shields.io/badge/🎨_Icons-74_pixel--art-000000?style=flat-square"/>
   <img src="https://img.shields.io/badge/🤖_Built_with-Claude_Code_+_Codex-000000?style=flat-square"/>
@@ -313,17 +312,6 @@ RPGMod/
 
 - 🧠 **Claude Code** — ядро: опыт, статы, классы, узлы Воина и Стрелка, сеть, сохранение, весь интерфейс.
 - 🎨 **Codex** — 74 пиксельные иконки, узлы Мага и Призывателя, предметы сброса, пробуждение.
-
-## 🗺️ Статус
-
-- [x] Опыт, уровни, HUD, мультиплеер
-- [x] 6 статов и окно персонажа
-- [x] 4 класса и 60 узлов древа
-- [x] Предметы сброса
-- [x] Финальный интерфейс и иконки
-- [x] Пробуждение
-- [ ] Проверка в игре и в мультиплеере
-- [ ] Баланс опыта тестовым прохождением
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3cc8d0,35:a77bf0,70:5cc461,100:e8604c&height=100&section=footer&reversal=true" width="100%"/>
