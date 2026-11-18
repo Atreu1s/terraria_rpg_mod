@@ -110,8 +110,8 @@ public class RPGConfig : ModConfig
     // xpToNext(L) = XPCurveBase * L ^ XPCurveExponent
     [Range(1f, 10000f)]
     [Increment(5f)]
-    [DefaultValue(60f)]
-    public float XPCurveBase { get; set; } = 60f;
+    [DefaultValue(300f)]
+    public float XPCurveBase { get; set; } = 300f;
 
     [Range(1f, 4f)]
     [Increment(0.05f)]
