@@ -1,0 +1,707 @@
+HUD: {
+	TierOpenTitle: "Skill tree tier {0} unlocked"
+	TierOpenSubtitle: Spend the tree point in the Status window
+	XPGain: "+{0} XP"
+	LevelShort: LV.
+	NoClass: No class
+	XPProgress: "{0} / {1} XP"
+	Points: "Stat points: {0} · tree: {1}"
+	XPTooltip: "{0}% to level {1}"
+	LevelUpTitle: Level up!
+	LevelUpSubtitle: "+{0} stat point(s)"
+	LevelUpChat: "Level up: {0}!"
+}
+
+Commands: {
+	Description: RPG mod debug (enable it in the config)
+	Disabled: '/rpg is disabled. Turn on "Debug commands" in the mod config.'
+	State: "Lv {0}, XP {1}/{2}, class {3}, nodes {4} | hardmode {5}, mechs {6}, Moon Lord {7}"
+}
+
+Configs: {
+	RPGConfig: {
+		DisplayName: RPG Settings
+
+		Headers: {
+			Experience: Monster experience
+			LevelDifference: Level difference
+			Bosses: Bosses
+			Tree: Class and tiers
+			Stats: Stats
+			LevelCurve: Level curve
+			Debug: Debug
+		}
+
+		XPMultiplier: {
+			Label: XP multiplier
+			Tooltip: Global multiplier for all experience
+		}
+
+		PowerLife: {
+			Label: "Power: life weight"
+			Tooltip: "power = weight × √(max life) + ..."
+		}
+
+		PowerDamage: {
+			Label: "Power: damage weight"
+			Tooltip: Power per point of monster damage
+		}
+
+		PowerDefense: {
+			Label: "Power: defense weight"
+			Tooltip: Power per point of monster defense
+		}
+
+		PowerPerLevel: {
+			Label: Power per monster level
+			Tooltip: Monster level = power / this value
+		}
+
+		XPPowerFactor: {
+			Label: XP factor
+			Tooltip: XP = factor × power ^ exponent
+		}
+
+		XPPowerExponent: {
+			Label: XP exponent
+			Tooltip: XP = factor × power ^ exponent
+		}
+
+		EventMultiplier: {
+			Label: Event multiplier
+			Tooltip: Moons, eclipse, invasions, Old One's Army
+		}
+
+		LevelDiffGrace: {
+			Label: Level difference without penalty
+			Tooltip: How many levels above a monster a player can be without a penalty
+		}
+
+		LevelDiffPenaltyPerLevel: {
+			Label: Penalty per level
+			Tooltip: XP reduction for each extra level of difference
+		}
+
+		LevelDiffMinMultiplier: {
+			Label: Minimum multiplier
+			Tooltip: XP never drops below this fraction
+		}
+
+		LevelDiffBonusPerLevel: {
+			Label: Bonus per level
+			Tooltip: Bonus for each level the monster is above the player
+		}
+
+		LevelDiffMaxBonus: {
+			Label: Maximum bonus
+			Tooltip: Cap for the stronger-monster bonus
+		}
+
+		BossXPFraction: {
+			Label: Boss XP fraction
+			Tooltip: A listed boss gives this fraction of the XP needed at its level
+		}
+
+		UnknownBossMultiplier: {
+			Label: Other mods' boss multiplier
+			Tooltip: Bosses missing from the table use the generic formula × this value
+		}
+
+		XPCurveBase: {
+			Label: Level curve base
+			Tooltip: XP to next level = base × level ^ exponent
+		}
+
+		XPCurveExponent: {
+			Label: Level curve exponent
+			Tooltip: XP to next level = base × level ^ exponent
+		}
+
+		ClassLevel: {
+			Label: "Class choice level"
+		}
+
+		Tier1Level: {
+			Label: "Tier 1 level"
+		}
+
+		Tier2Level: {
+			Label: "Tier 2 level"
+		}
+
+		Tier3Level: {
+			Label: "Tier 3 level"
+		}
+
+		StatPointsPerLevel: {
+			Label: "Stat points per level"
+			Tooltip: "Free points per level"
+		}
+
+		SoftCapK: {
+			Label: "Diminishing returns constant"
+			Tooltip: "bonus = X × n / (n + K)"
+		}
+
+		StrMeleeDamage: {
+			Label: "Strength: melee damage"
+			Tooltip: "Bonus cap (0.6 = +60%)"
+		}
+
+		StrMeleeSpeed: {
+			Label: "Strength: melee speed"
+			Tooltip: "Bonus cap"
+		}
+
+		DexRangedDamage: {
+			Label: "Agility: ranged damage"
+			Tooltip: "Bonus cap"
+		}
+
+		DexMoveSpeed: {
+			Label: "Agility: move speed"
+			Tooltip: "Bonus cap"
+		}
+
+		DexAmmoSave: {
+			Label: "Agility: ammo saving"
+			Tooltip: "Cap for the chance not to consume ammo"
+		}
+
+		IntMagicDamage: {
+			Label: "Intellect: magic damage"
+			Tooltip: "Bonus cap"
+		}
+
+		IntManaPerPoint: {
+			Label: "Intellect: mana per point"
+			Tooltip: "Linear, up to the cap below"
+		}
+
+		IntManaCap: {
+			Label: "Intellect: mana cap"
+		}
+
+		IntManaCost: {
+			Label: "Intellect: mana cost reduction"
+			Tooltip: "Bonus cap"
+		}
+
+		SpiritMinionDamage: {
+			Label: "Spirit: minion damage"
+			Tooltip: "Bonus cap"
+		}
+
+		SpiritSlot1: {
+			Label: "Spirit: 1st slot threshold"
+			Tooltip: "Spirit for +1 minion slot"
+		}
+
+		SpiritSlot2: {
+			Label: "Spirit: 2nd slot threshold"
+		}
+
+		SpiritSlot3: {
+			Label: "Spirit: 3rd slot threshold"
+		}
+
+		SpiritWhip: {
+			Label: "Spirit: whip speed and range"
+			Tooltip: "Bonus cap"
+		}
+
+		VitMaxLife: {
+			Label: "Vitality: max life"
+			Tooltip: "Bonus cap (HP)"
+		}
+
+		VitDamageReduction: {
+			Label: "Vitality: damage reduction"
+			Tooltip: "Bonus cap"
+		}
+
+		VitRegenPerPoints: {
+			Label: "Vitality: points per +1 regeneration"
+		}
+
+		LuckCrit: {
+			Label: "Luck: crit chance"
+			Tooltip: "Cap in percent"
+		}
+
+		LuckLuck: {
+			Label: "Luck: player luck"
+			Tooltip: "Cap for Player.luck bonus"
+		}
+
+		DebugCommands: {
+			Label: Debug commands
+			Tooltip: Enables the /rpg chat command (level, XP, boss flags, reset)
+		}
+	}
+
+	RPGClientConfig: {
+		DisplayName: RPG Interface
+
+		StatusButtonX: {
+			Label: "Status button: X"
+			Tooltip: Position on the inventory screen at 100% UI scale
+		}
+
+		StatusButtonY: {
+			Label: "Status button: Y"
+			Tooltip: Position on the inventory screen at 100% UI scale
+		}
+	}
+}
+
+UI: {
+	ColumnClass: "Class"
+	ColumnTier: "Tier {0} · {1}"
+	TierLabel: "Tier {0} · {1}"
+	ClassTierLabel: "Class"
+	Requirement: "Unlock: {0}"
+	ClassRequirement: "level {0}"
+	SelectNodeHint: "Select a node to see its description"
+	SelectClassHint: "Choose a class: it sets your stat growth and tree branch"
+	StateAvailable: "Available"
+	AwakenSlot: "Awakening"
+	AwakenUnknown: "???"
+	AwakenHint: "Power sleeps in the hearts of those who fell after the Moon"
+	AwakenDone: "Awakened"
+	AwakenNeedTier3: "Choose a tier III node first"
+	TreeTitle: "Skill tree · {0}"
+	TreePoints: "Tree points:"
+	ClassFromLevel: "A class can be chosen from level {0}"
+	PickClass: Choose class
+	PickNode: "Choose (−1 point)"
+	StatePicked: Chosen
+	StateBranchClosed: Branch closed
+	StateLocked: "Locked: {0}"
+	StateNeedParent: Needs the node above or a tree point
+	TierReq1: "Lv {0} + Wall of Flesh"
+	TierReq2: "Lv {0} + all three mechanical bosses"
+	TierReq3: "Lv {0} + Moon Lord"
+	StatusButton: Status
+	StatsTitle: Attributes
+	ClassLevel: "{0} · lv. {1}"
+	FreePoints: Free points
+	StatBreakdown: "{0} from class + {1} invested"
+	StatHint: "Shift+click: +5 · Ctrl+click: all points"
+	TreeTitleNoClass: Skill tree
+}
+
+Classes: {
+	none.Name: No class
+	warrior.Growth: Per level: Strength 0.5 · Vitality 0.35
+	warrior.Name: Warrior
+	ranger.Growth: Per level: Agility 0.6 · Vitality 0.25
+	ranger.Name: Ranger
+	mage.Growth: Per level: Intellect 0.6 · Spirit 0.1 · Vitality 0.15
+	mage.Name: Mage
+	summoner.Growth: Per level: Spirit 0.55 · Intellect 0.1 · Vitality 0.2
+	summoner.Name: Summoner
+}
+
+Stats: {
+	str: {
+		Name: Strength
+		Letter: S
+		Line1: "Melee damage +{0}%"
+		Line2: "Melee attack speed +{0}%"
+	}
+
+	agi: {
+		Name: Agility
+		Letter: A
+		Line1: "Ranged damage +{0}%"
+		Line2: "Move speed +{0}% · ammo saving {1}%"
+	}
+
+	int: {
+		Name: Intellect
+		Letter: I
+		Line1: "Magic damage +{0}%"
+		Line2: "Mana +{0} · mana cost −{1}%"
+	}
+
+	spi: {
+		Name: Spirit
+		Letter: Sp
+		Line1: "Minion damage +{0}%"
+		Line2: "Minion slots +{0} · whips +{1}%"
+	}
+
+	vit: {
+		Name: Vitality
+		Letter: V
+		Line1: "Max life +{0}"
+		Line2: "Damage reduction {0}% · regeneration +{1}"
+	}
+
+	luck: {
+		Name: Luck
+		Letter: L
+		Line1: "Crit chance +{0}%"
+		Line2: "Luck +{0}"
+	}
+}
+
+Keybinds.ToggleCharacter.DisplayName: Character window
+
+Nodes: {
+	warrior: {
+		Name: "Warrior"
+		Effect: "+5% melee damage, +20 max life"
+	}
+
+	berserker: {
+		Name: "Berserker"
+		Effect: "+12% melee damage and +8% melee speed; −10% damage reduction"
+	}
+
+	guardian: {
+		Name: "Guardian"
+		Effect: "+10% max life, +8% damage reduction; −8% melee damage"
+	}
+
+	blood_rage: {
+		Name: "Blood Rage"
+		Effect: "Damage grows as you lose life, up to +25% below 30% life"
+	}
+
+	frenzy: {
+		Name: "Frenzy"
+		Effect: "Each hit grants a stack of +2% attack speed for 3 s, up to 10 stacks"
+	}
+
+	iron_flesh: {
+		Name: "Iron Flesh"
+		Effect: "+1% melee damage per 5 defense, up to +25%"
+	}
+
+	retribution: {
+		Name: "Retribution"
+		Effect: "After taking damage, your next hit within 3 s deals +30%"
+	}
+
+	possessed: {
+		Name: "Possessed"
+		Effect: "Below 25% life: 3% lifesteal, at most 10 HP/s"
+	}
+
+	unbreakable: {
+		Name: "Unbreakable"
+		Effect: "Once per 5 minutes a lethal hit leaves you at 1 HP with 3 s of invulnerability"
+	}
+
+	whirlwind: {
+		Name: "Whirlwind"
+		Effect: "At 10 stacks: +15% damage and +15% move speed"
+	}
+
+	iron_rhythm: {
+		Name: "Iron Rhythm"
+		Effect: "Stacks last 6 s, max 6; each stack also gives +2% damage"
+	}
+
+	colossus: {
+		Name: "Colossus"
+		Effect: "+15% max life; every 100 max life gives +2% damage reduction, up to +10%"
+	}
+
+	will_shield: {
+		Name: "Shield of Will"
+		Effect: "8 s without taking damage creates a shield for 15% max life; knockback immunity"
+	}
+
+	eye_for_eye: {
+		Name: "Eye for an Eye"
+		Effect: "Retribution hits heal for 5% of damage dealt"
+	}
+
+	counterstrike: {
+		Name: "Counterstrike"
+		Effect: "When hit, enemies within 10 tiles take 100% of that damage, 2 s cooldown"
+	}
+
+	ranger: {
+		Name: "Ranger"
+		Effect: "+5% ranged damage, +5% move speed"
+	}
+
+	sniper: {
+		Name: "Sniper"
+		Effect: "+10% ranged damage, +8% crit; −12% attack speed"
+	}
+
+	gunner: {
+		Name: "Gunner"
+		Effect: "+15% ranged attack speed; −6% crit, −5% damage"
+	}
+
+	cold_blood: {
+		Name: "Cold Blood"
+		Effect: "Standing still for 1 s: +15% crit and +10% damage"
+	}
+
+	long_range: {
+		Name: "Long Range"
+		Effect: "Damage grows with distance, up to +20% at 40+ tiles"
+	}
+
+	spin_up: {
+		Name: "Spin-Up"
+		Effect: "Continuous fire: +2% attack speed per second, up to +20%"
+	}
+
+	quartermaster: {
+		Name: "Quartermaster"
+		Effect: "+20% chance not to consume ammo, +8% move speed"
+	}
+
+	deadshot: {
+		Name: "Deadshot"
+		Effect: "Crits deal ×2.5 damage instead of ×2"
+	}
+
+	hunters_mark: {
+		Name: "Hunter's Mark"
+		Effect: "Hits mark the target for 5 s: it takes +10% damage from all sources"
+	}
+
+	explosive_rounds: {
+		Name: "Explosive Rounds"
+		Effect: "Crits explode: 35% damage to enemies within 3 tiles"
+	}
+
+	armor_breaker: {
+		Name: "Armor Breaker"
+		Effect: "Shots ignore 20 enemy defense"
+	}
+
+	lead_rain: {
+		Name: "Lead Rain"
+		Effect: "At max spin-up, 20% chance for an extra projectile"
+	}
+
+	overheat: {
+		Name: "Overheat"
+		Effect: "At max spin-up, projectiles set the target on fire"
+	}
+
+	run_and_gun: {
+		Name: "Run and Gun"
+		Effect: "While moving: +10% ranged damage"
+	}
+
+	bottomless_mag: {
+		Name: "Bottomless Magazine"
+		Effect: "+30% more chance not to consume ammo; above 80% life +8% damage"
+	}
+
+	mage: {
+		Name: "Mage"
+		Effect: "+5% magic damage, +20 max mana"
+	}
+
+	arcanist: {
+		Name: "Arcanist"
+		Effect: "+14% magic damage; −15% max mana"
+	}
+
+	mystic: {
+		Name: "Mystic"
+		Effect: "−20% mana cost, +60 max mana, faster mana regeneration; −8% magic damage"
+	}
+
+	overload: {
+		Name: "Overload"
+		Effect: "+1% magic damage per 1% missing mana, up to +25%"
+	}
+
+	elemental: {
+		Name: "Elemental Might"
+		Effect: "15% chance to inflict fire, frost or poison"
+	}
+
+	flow: {
+		Name: "Flow"
+		Effect: "Above 70% mana: +10% damage and +8% magic attack speed"
+	}
+
+	meditation: {
+		Name: "Meditation"
+		Effect: "Standing still: ×2 mana regeneration and +2 HP/s"
+	}
+
+	blood_magic: {
+		Name: "Blood Magic"
+		Effect: "When out of mana, spells cost life: 2 HP per 1 mana"
+	}
+
+	resonance: {
+		Name: "Resonance"
+		Effect: "Every 5th magic hit deals double damage"
+	}
+
+	catalyst: {
+		Name: "Catalyst"
+		Effect: "+15% damage to enemies with any debuff"
+	}
+
+	chain_reaction: {
+		Name: "Chain Reaction"
+		Effect: "Killing a debuffed enemy spreads its debuffs to enemies within 10 tiles"
+	}
+
+	mana_shield: {
+		Name: "Mana Shield"
+		Effect: "20% of damage taken is drained from mana instead of life"
+	}
+
+	overflow: {
+		Name: "Overflow"
+		Effect: "Mana regeneration does not stop while attacking; another −10% mana cost"
+	}
+
+	enlightenment: {
+		Name: "Enlightenment"
+		Effect: "After 3 s standing still, your next spell deals +40%"
+	}
+
+	mana_blood: {
+		Name: "Mana Blood"
+		Effect: "Every 100 mana spent restores 10 HP"
+	}
+
+	summoner: {
+		Name: "Summoner"
+		Effect: "+5% minion damage, +5% whip speed"
+	}
+
+	swarm_lord: {
+		Name: "Swarm Lord"
+		Effect: "+1 minion slot; −8% minion damage"
+	}
+
+	beastmaster: {
+		Name: "Beastmaster"
+		Effect: "+14% minion damage and knockback; −10% max life"
+	}
+
+	pack: {
+		Name: "Pack"
+		Effect: "+2% minion damage per active minion"
+	}
+
+	thousand_bites: {
+		Name: "Thousand Bites"
+		Effect: "Minion hits stack on the enemy (up to 10): +1% minion damage to it per stack, stacks last 3 s"
+	}
+
+	whip_master: {
+		Name: "Whip Master"
+		Effect: "+20% whip speed; whip hits give minions +10% damage for 5 s"
+	}
+
+	bond: {
+		Name: "Bond"
+		Effect: "While you have at least 1 minion: +12% damage reduction"
+	}
+
+	legion: {
+		Name: "Legion"
+		Effect: "+1 minion slot"
+	}
+
+	unity: {
+		Name: "Unity"
+		Effect: "With 5+ minions: +10% damage reduction"
+	}
+
+	hive: {
+		Name: "Hive"
+		Effect: "At 10 stacks the target takes +10% damage from all sources"
+	}
+
+	devourer: {
+		Name: "Devourer"
+		Effect: "Killing a target with 5+ stacks heals 5 HP and gives +5% minion damage for 5 s, up to 3 times"
+	}
+
+	sic_em: {
+		Name: "Sic 'Em"
+		Effect: "A whip-tagged target takes +15% damage from minions"
+	}
+
+	pack_heal: {
+		Name: "Pack Care"
+		Effect: "Whip hits heal 1 HP per minion, at most once per second"
+	}
+
+	alpha: {
+		Name: "Alpha"
+		Effect: "If only one minion type is summoned, +20% damage for them"
+	}
+
+	sacrifice: {
+		Name: "Sacrifice"
+		Effect: "Once per 3 minutes a lethal hit dismisses all minions and leaves you at 1 HP"
+	}
+}
+
+Awakening: {
+	warrior: {
+		Name: "Avatar of War"
+		Effect: "Hits build Fervor; when full, 8 s of +30% damage and +20% attack speed"
+		Bonus: "Berserker: 2% lifesteal · Guardian: +15% damage reduction"
+	}
+
+	ranger: {
+		Name: "Eye of the Storm"
+		Effect: "Every 10th shot fires a homing projectile for 300% damage"
+		Bonus: "Sniper: every 6th · Gunner: 3 projectiles for 100%"
+	}
+
+	mage: {
+		Name: "Archmage"
+		Effect: "When mana runs out, 5 s of infinite mana; 45 s cooldown"
+		Bonus: "Arcanist: +25% damage meanwhile · Mystic: heals 20% life"
+	}
+
+	summoner: {
+		Name: "Lord of Spirits"
+		Effect: "+1 minion slot; minions crit with your crit chance"
+		Bonus: "Swarm Lord: +1 more slot · Beastmaster: minion crits ×2.5"
+	}
+}
+
+Items: {
+    AwakeningEssence: {
+        DisplayName: Awakening Essence
+        Tooltip: A personal essence from a fallen post-Moon Lord boss
+    }
+    AwakeningStone: {
+        DisplayName: Awakening Stone
+        Tooltip: "Awakens your chosen class\nRequires a selected tier-3 node; cannot be used while awakened"
+    }
+    StatResetItem: {
+        DisplayName: Stat Reset
+        Tooltip: Refunds all manually assigned stat points
+    }
+    TreeResetItem: {
+        DisplayName: Tree Reset
+        Tooltip: Resets your class and skill tree; returns an Awakening Stone if awakened
+    }
+}
+Awakening2: {
+    Fervor: Fervor
+    Awakened: "Awakened: {0}!"
+    ThreeSources: Obtain essences from at least three different bosses
+    RecipeHint: "Awakening Stone: 3 Awakening Essence + 10 Divine Geode + 3 Armored Shell + 3 Dark Plasma + 3 Twisting Nether, at an Ancient Manipulator. Requires essences from three different bosses."
+    StatsReset: Your assigned stat points have been refunded.
+    TreeReset: Your class and skill tree have been reset.
+    TreeResetRefund: Your class and skill tree have been reset. Your Awakening Stone has been returned.
+}
+Projectiles.AwakeningBolt.DisplayName: Storm Eye

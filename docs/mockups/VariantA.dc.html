@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Вариант A — ванильный инвентарь</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#ffe066}a:hover{color:#fff1a8}
+.tt{text-shadow:-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,1.5px 1.5px 0 #000,0 2px 0 #000}
+.tt2{text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,0 3px 0 #000}
+.pulse{animation:nodepulse 1.4s ease-in-out infinite}
+@keyframes nodepulse{0%,100%{filter:drop-shadow(0 0 0 currentColor)}50%{filter:drop-shadow(0 0 9px currentColor)}}
+@media (prefers-reduced-motion: reduce){.pulse{animation:none;filter:drop-shadow(0 0 5px currentColor)}}
+</style>
+</helmet>
+<div style="position: relative; width: 1640px; height: 940px; overflow: hidden; background: #6a9be0; font-family: 'Rubik', sans-serif; color: #ffffff">
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: #7b5530" aria-hidden="true"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 130px; height: 26px; background: #4f9e3a" aria-hidden="true"></div>
+<div style="position: relative; display: flex; gap: 24px; padding: 24px; height: 100%; box-sizing: border-box">
+<section style="width: 420px; flex: none; box-sizing: border-box; background: rgba(47, 58, 150, 0.84); border: 2px solid #9fb0ff; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h1 class="tt2" style="margin: 0; font-weight: 800; font-size: 28px">Характеристики</h1>
+<span class="tt" style="font-weight: 600; font-size: 14px">Воин · ур. 78</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; background: rgba(63, 82, 190, 0.9); border: 2px solid #b8c4ff; border-radius: 8px; padding: 8px 12px">
+<span class="tt" style="font-weight: 600; font-size: 15px">Свободные очки</span>
+<span class="tt2" style="font-weight: 800; font-size: 26px; color: #ffe066">{{free}}</span>
+</div>
+<sc-for list="{{stats}}" as="st" hint-placeholder-count="6">
+<div style="display: flex; gap: 12px; align-items: center; padding: 4px 0">
+<div style="width: 52px; height: 52px; flex: none; box-sizing: border-box; border-radius: 8px; background: rgba(63, 82, 190, 0.95); border: 2px solid #b8c4ff; display: flex; align-items: center; justify-content: center">
+<span class="tt2" style="font-weight: 800; font-size: 24px; color: {{st.color}}">{{st.letter}}</span>
+</div>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span class="tt" style="font-weight: 700; font-size: 16px">{{st.name}}</span>
+<span class="tt2" style="font-weight: 800; font-size: 20px">{{st.total}}</span>
+</div>
+<span class="tt" style="font-weight: 500; font-size: 13px; color: #e3e8ff">{{st.line1}}</span>
+<span class="tt" style="font-weight: 500; font-size: 13px; color: #e3e8ff">{{st.line2}}</span>
+</div>
+<button type="button" onClick="{{st.add}}" disabled="{{st.cannot}}" aria-label="{{st.addLabel}}" class="tt" style="width: 44px; height: 44px; flex: none; box-sizing: border-box; border-radius: 8px; border: 2px solid #b8c4ff; background: rgba(63, 82, 190, 0.95); color: #ffe066; font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 24px; cursor: pointer; opacity: {{st.op}}">+</button>
+</div>
+</sc-for>
+<button type="button" onClick="{{reset}}" class="tt" style="margin-top: auto; height: 44px; border-radius: 8px; border: 2px solid #b8c4ff; background: rgba(30, 36, 100, 0.9); color: #ffffff; font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer">Сброс статов</button>
+</section>
+<section style="flex: 1; min-width: 0; box-sizing: border-box; background: rgba(47, 58, 150, 0.84); border: 2px solid #9fb0ff; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<header style="display: flex; align-items: center; gap: 20px">
+<h1 class="tt2" style="margin: 0; font-weight: 800; font-size: 28px">Древо навыков · Воин</h1>
+<span class="tt" style="margin-left: auto; font-weight: 600; font-size: 15px">Очки древа: <span class="tt2" style="color: #ffe066; font-size: 20px; font-weight: 800">{{points}}</span></span>
+</header>
+<div style="display: flex; gap: 24px; flex: 1; min-height: 0">
+<div style="width: 860px; flex: none; display: flex; flex-direction: column; gap: 8px">
+<div style="position: relative; height: 20px; font-weight: 700; font-size: 13px; color: #e3e8ff">
+<span class="tt" style="position: absolute; left: 0; width: 140px; text-align: center">Класс</span>
+<span class="tt" style="position: absolute; left: 180px; width: 140px; text-align: center">Тир I · 25</span>
+<span class="tt" style="position: absolute; left: 370px; width: 140px; text-align: center">Тир II · 50</span>
+<span class="tt" style="position: absolute; left: 550px; width: 140px; text-align: center">Тир III · 75</span>
+</div>
+<div style="position: relative; width: 860px; height: 720px">
+<svg width="860" height="720" viewBox="0 0 860 720" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<path d="M96 360H160V180H224M160 360V540H224M276 180H345V90H414M345 180V270H414M276 540H345V450H414M345 540V630H414M466 90H530V45H594M530 90V135H594M466 270H530V225H594M530 270V315H594M466 450H530V405H594M530 450V495H594M466 630H530V585H594M530 630V675H594" fill="none" stroke="#1b2266" strokeWidth="4"></path>
+<path d="M96 360H160V180H224" fill="none" stroke="{{edges.e1.s}}" strokeWidth="{{edges.e1.w}}" strokeDasharray="{{edges.e1.d}}"></path>
+<path d="M96 360H160V540H224" fill="none" stroke="{{edges.e2.s}}" strokeWidth="{{edges.e2.w}}" strokeDasharray="{{edges.e2.d}}"></path>
+<path d="M276 180H345V90H414" fill="none" stroke="{{edges.e3.s}}" strokeWidth="{{edges.e3.w}}" strokeDasharray="{{edges.e3.d}}"></path>
+<path d="M276 180H345V270H414" fill="none" stroke="{{edges.e4.s}}" strokeWidth="{{edges.e4.w}}" strokeDasharray="{{edges.e4.d}}"></path>
+<path d="M276 540H345V450H414" fill="none" stroke="{{edges.e5.s}}" strokeWidth="{{edges.e5.w}}" strokeDasharray="{{edges.e5.d}}"></path>
+<path d="M276 540H345V630H414" fill="none" stroke="{{edges.e6.s}}" strokeWidth="{{edges.e6.w}}" strokeDasharray="{{edges.e6.d}}"></path>
+<path d="M466 90H530V45H594" fill="none" stroke="{{edges.e7.s}}" strokeWidth="{{edges.e7.w}}" strokeDasharray="{{edges.e7.d}}"></path>
+<path d="M466 90H530V135H594" fill="none" stroke="{{edges.e8.s}}" strokeWidth="{{edges.e8.w}}" strokeDasharray="{{edges.e8.d}}"></path>
+<path d="M466 270H530V225H594" fill="none" stroke="{{edges.e9.s}}" strokeWidth="{{edges.e9.w}}" strokeDasharray="{{edges.e9.d}}"></path>
+<path d="M466 270H530V315H594" fill="none" stroke="{{edges.e10.s}}" strokeWidth="{{edges.e10.w}}" strokeDasharray="{{edges.e10.d}}"></path>
+<path d="M466 450H530V405H594" fill="none" stroke="{{edges.e11.s}}" strokeWidth="{{edges.e11.w}}" strokeDasharray="{{edges.e11.d}}"></path>
+<path d="M466 450H530V495H594" fill="none" stroke="{{edges.e12.s}}" strokeWidth="{{edges.e12.w}}" strokeDasharray="{{edges.e12.d}}"></path>
+<path d="M466 630H530V585H594" fill="none" stroke="{{edges.e13.s}}" strokeWidth="{{edges.e13.w}}" strokeDasharray="{{edges.e13.d}}"></path>
+<path d="M466 630H530V675H594" fill="none" stroke="{{edges.e14.s}}" strokeWidth="{{edges.e14.w}}" strokeDasharray="{{edges.e14.d}}"></path>
+</svg>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="15">
+<div style="position: absolute; left: {{n.left}}; top: {{n.top}}; width: 52px; height: 52px">
+<sc-if value="{{n.sel}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: -6px; top: -6px; width: 60px; height: 60px; border: 2px solid #ffe066; border-radius: 12px" aria-hidden="true"></div>
+</sc-if>
+<div class="{{n.wrapClass}}" style="width: 52px; height: 52px; color: {{n.glow}}">
+<button type="button" onClick="{{n.select}}" aria-label="{{n.aria}}" style="display: block; width: 52px; height: 52px; padding: 2px; border: none; cursor: pointer; background: {{n.border}}; border-radius: 8px; opacity: {{n.op}}">
+<span class="tt2" style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; background: {{n.fill}}; border-radius: 6px; color: {{n.ink}}; font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 22px">{{n.letter}}</span>
+</button>
+</div>
+<span class="tt" style="position: absolute; right: 3px; bottom: 1px; font-size: 11px; font-weight: 800; color: #ffe066" aria-hidden="true">{{n.tierMark}}</span>
+<sc-if value="{{n.leaf}}" hint-placeholder-val="{{ true }}">
+<span class="tt" style="position: absolute; left: 66px; top: 16px; width: 190px; font-size: 14px; font-weight: 600; color: {{n.labelInk}}; white-space: nowrap">{{n.name}}</span>
+</sc-if>
+<sc-if value="{{n.mid}}" hint-placeholder-val="{{ false }}">
+<span class="tt" style="position: absolute; left: -54px; top: 60px; width: 160px; text-align: center; font-size: 14px; font-weight: 600; color: {{n.labelInk}}">{{n.name}}</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<aside style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; background: rgba(30, 36, 100, 0.85); border: 2px solid #b8c4ff; border-radius: 8px; padding: 14px; box-sizing: border-box">
+<span class="tt" style="font-size: 12px; font-weight: 700; color: #e3e8ff">{{sel.tierLabel}}</span>
+<h2 class="tt2" style="margin: 0; font-weight: 800; font-size: 22px; color: #ffe066">{{sel.name}}</h2>
+<p class="tt" style="margin: 0; font-size: 14px; font-weight: 500; line-height: 1.45">{{sel.effect}}</p>
+<span class="tt" style="font-size: 13px; font-weight: 600; color: #e3e8ff">{{sel.status}}</span>
+<span class="tt" style="font-size: 12px; font-weight: 500; color: #e3e8ff">Открытие: {{sel.req}}</span>
+<button type="button" onClick="{{pickSel}}" disabled="{{selCannot}}" class="tt" style="height: 44px; border-radius: 8px; border: 2px solid #b8c4ff; background: {{pickBg}}; color: #ffffff; font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer">{{pickLabel}}</button>
+<button type="button" onClick="{{reset2}}" class="tt" style="margin-top: auto; height: 44px; border-radius: 8px; border: 2px solid #b8c4ff; background: rgba(30, 36, 100, 0.9); color: #ffffff; font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer">Сброс древа</button>
+</aside>
+</div>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1640,"height":940}}'>
+const NODES = [
+  ['warrior', 'Воин', '+5% урона ближнего боя, +20 HP'],
+  ['berserker', 'Берсерк', '+12% урона и +8% скорости атаки ближнего боя; −10% снижения урона'],
+  ['guardian', 'Страж', '+10% HP, +8% снижения урона; −8% урона ближнего боя'],
+  ['blood_rage', 'Кровавая ярость', 'Урон растёт по мере потери HP, до +25% при HP ниже 30%'],
+  ['frenzy', 'Неистовство', 'Каждый удар даёт стак +2% скорости атаки на 3 с, до 10 стаков'],
+  ['iron_flesh', 'Железная плоть', '+1% урона ближнего боя за каждые 5 защиты, до +25%'],
+  ['retribution', 'Возмездие', 'После получения урона следующий удар в течение 3 с наносит +30%'],
+  ['possessed', 'Одержимый', 'При HP ниже 25%: вампиризм 3% нанесённого урона, не больше 10 HP/с'],
+  ['unbreakable', 'Несокрушимый', 'Раз в 5 минут смертельный удар оставляет 1 HP и даёт 3 с неуязвимости'],
+  ['whirlwind', 'Вихрь', 'На 10 стаках: +15% урона и +15% скорости передвижения'],
+  ['iron_rhythm', 'Железный ритм', 'Стаки держатся 6 с, максимум 6; каждый стак ещё +2% урона'],
+  ['colossus', 'Колосс', '+15% макс. HP; каждые 100 макс. HP дают +2% снижения урона, до +10%'],
+  ['will_shield', 'Щит воли', '8 с без получения урона создают щит на 15% макс. HP; иммунитет к отбрасыванию'],
+  ['eye_for_eye', 'Око за око', 'Удар Возмездия лечит на 5% нанесённого урона'],
+  ['counterstrike', 'Ответный удар', 'При получении урона враги в 10 блоках получают 100% этого урона, перезарядка 2 с']
+];
+const XS = [70, 250, 440, 620];
+const YS = [[360], [180, 540], [90, 270, 450, 630], [45, 135, 225, 315, 405, 495, 585, 675]];
+const FIRST = [0, 1, 3, 7];
+const TIER = ['Класс', 'Тир I', 'Тир II', 'Тир III'];
+const MARK = ['', 'I', 'II', 'III'];
+const REQ = ['10 уровень', '25 уровень + Стена плоти', '50 уровень + все три механика', '75 уровень + Лунный лорд'];
+const depthOf = (i) => (i === 0 ? 0 : i < 3 ? 1 : i < 7 ? 2 : 3);
+const LEVEL = 78;
+const GROWTH = { str: 0.5, vit: 0.35 };
+const START = { str: 50, agi: 5, int: 0, spi: 0, vit: 15, luck: 0 };
+const soft = (n, max) => max * n / (n + 100);
+const f = (v) => v.toFixed(1).replace('.', ',');
+const DEFS = [
+  { key: 'str', name: 'Сила', letter: 'С', color: '#ff8a7a', fx: (t) => ['Урон ближнего боя +' + f(soft(t, 60)) + '%', 'Скорость атаки ближнего +' + f(soft(t, 20)) + '%'] },
+  { key: 'agi', name: 'Ловкость', letter: 'Л', color: '#8ff08f', fx: (t) => ['Урон дальнего боя +' + f(soft(t, 60)) + '%', 'Скорость передвижения +' + f(soft(t, 25)) + '%'] },
+  { key: 'int', name: 'Интеллект', letter: 'И', color: '#c9a8ff', fx: (t) => ['Урон магии +' + f(soft(t, 60)) + '%', 'Макс. мана +' + Math.min(t, 200)] },
+  { key: 'spi', name: 'Дух', letter: 'Д', color: '#7ff0f5', fx: (t) => ['Урон миньонов +' + f(soft(t, 60)) + '%', 'Слоты миньонов +' + [30, 80, 150].filter((v) => t >= v).length] },
+  { key: 'vit', name: 'Выносливость', letter: 'В', color: '#ffc27a', fx: (t) => ['Макс. HP +' + Math.round(soft(t, 200)), 'Снижение урона +' + f(soft(t, 15)) + '%'] },
+  { key: 'luck', name: 'Удача', letter: 'У', color: '#ffe066', fx: (t) => ['Крит всех классов +' + f(soft(t, 15)) + '%', 'Удача игры +' + (0.3 * t / (t + 100)).toFixed(2).replace('.', ',')] }
+];
+const STYLE = {
+  picked: { border: '#ffe066', fill: 'rgba(63, 82, 190, 0.98)', ink: '#ffffff', label: '#ffffff', op: 1 },
+  avail: { border: '#ffffff', fill: 'rgba(63, 82, 190, 0.98)', ink: '#ffffff', label: '#ffffff', op: 1 },
+  blocked: { border: '#5d6bb8', fill: 'rgba(25, 30, 80, 0.92)', ink: '#9aa6e6', label: '#c3cbf5', op: 0.45 },
+  locked: { border: '#5d6bb8', fill: 'rgba(25, 30, 80, 0.92)', ink: '#9aa6e6', label: '#c3cbf5', op: 1 }
+};
+const EDGE = { picked: { s: '#ffe066', w: 4, d: 'none' }, avail: { s: '#ffffff', w: 3, d: '7 6' } };
+const STATUS_TEXT = { picked: 'Выбран', avail: 'Доступен — можно выбрать', blocked: 'Закрыт: выбрана соседняя ветка', locked: 'Закрыт: сначала выберите узел выше' };
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const inv = s.inv || START;
+    const spent = Object.keys(inv).reduce((a, k) => a + inv[k], 0);
+    const free = LEVEL - spent;
+    const stats = DEFS.map((d) => {
+      const total = Math.floor(LEVEL * (GROWTH[d.key] || 0)) + inv[d.key];
+      const lines = d.fx(total);
+      return {
+        name: d.name, letter: d.letter, color: d.color, total: total, line1: lines[0], line2: lines[1],
+        cannot: free <= 0, op: free <= 0 ? 0.45 : 1, addLabel: 'Вложить очко в стат ' + d.name,
+        add: () => { if (free > 0) { const next = Object.assign({}, inv); next[d.key] += 1; this.setState({ inv: next }); } }
+      };
+    });
+    const picks = s.picks || [0, 1, 4];
+    const points = 3 - (picks.length - 1);
+    const has = (i) => picks.indexOf(i) >= 0;
+    const status = (i) => {
+      if (has(i)) return 'picked';
+      if (i === 0) return 'locked';
+      const p = Math.floor((i - 1) / 2);
+      const sib = i % 2 === 1 ? i + 1 : i - 1;
+      if (has(sib)) return 'blocked';
+      if (has(p) && points > 0) return 'avail';
+      return 'locked';
+    };
+    let sel = typeof s.sel === 'number' ? s.sel : -1;
+    if (sel < 0) { sel = 0; for (let i = 0; i < 15; i++) { if (status(i) === 'avail') { sel = i; break; } } }
+    const nodes = NODES.map((nd, i) => {
+      const d = depthOf(i);
+      const st = status(i);
+      const v = STYLE[st];
+      return {
+        name: nd[1], letter: nd[1].charAt(0), tierMark: MARK[d],
+        left: (XS[d] - 26) + 'px', top: (YS[d][i - FIRST[d]] - 26) + 'px',
+        leaf: d === 3, mid: d < 3, sel: i === sel,
+        wrapClass: st === 'avail' ? 'pulse' : '', glow: '#ffffff',
+        border: v.border, fill: v.fill, ink: v.ink, labelInk: v.label, op: v.op,
+        aria: nd[1] + ': ' + STATUS_TEXT[st],
+        select: () => this.setState({ sel: i })
+      };
+    });
+    const edges = {};
+    for (let i = 1; i < 15; i++) { edges['e' + i] = EDGE[status(i)] || { s: 'transparent', w: 0, d: 'none' }; }
+    const sst = status(sel);
+    const snd = NODES[sel];
+    return {
+      free: free, stats: stats, points: points, nodes: nodes, edges: edges,
+      reset: () => this.setState({ inv: { str: 0, agi: 0, int: 0, spi: 0, vit: 0, luck: 0 } }),
+      sel: { name: snd[1], effect: snd[2], tierLabel: TIER[depthOf(sel)], status: STATUS_TEXT[sst], req: REQ[depthOf(sel)] },
+      selCannot: sst !== 'avail',
+      pickLabel: sst === 'avail' ? 'Выбрать (−1 очко)' : sst === 'picked' ? 'Уже выбран' : 'Недоступно',
+      pickBg: sst === 'avail' ? '#3f9b3b' : 'rgba(30, 36, 100, 0.9)',
+      pickSel: () => { if (sst === 'avail') this.setState({ picks: picks.concat([sel]) }); },
+      reset2: () => this.setState({ picks: [0], sel: -1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+﻿{
+  "name": "rpgmod-icons",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Nearest-neighbor icon processing and validation",
+  "scripts": { "process": "node process.js", "check": "node check.js", "preview": "node preview.js" },
+  "dependencies": { "pngjs": "7.0.0" }
+}

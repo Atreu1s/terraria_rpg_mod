@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>HUD: уровень и уведомления</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f2c14e}a:hover{color:#ffd978}
+</style>
+</helmet>
+<div style="width: 760px; height: 300px; box-sizing: border-box; background: #0d1126; padding: 24px; font-family: 'Rubik', sans-serif; color: #eef0fa; display: flex; gap: 24px; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 8px; width: 360px">
+<span style="font-size: 12px; color: #b3b9dc; text-transform: uppercase; letter-spacing: 0.06em">Под хотбаром, слева</span>
+<div style="display: flex; align-items: center; gap: 12px; background: #1a2148; border: 2px solid #4656a8; border-radius: 10px; padding: 10px 12px">
+<div style="width: 52px; height: 52px; flex: none; border-radius: 50%; background: #e8604c59; border: 2px solid #e8604c; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-size: 10px; color: #eef0fa; line-height: 1">УР.</span>
+<span style="font-family: 'Pixelify Sans', sans-serif; font-weight: 700; font-size: 20px; line-height: 1">78</span>
+</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #b3b9dc">
+<span>Воин · Берсерк</span>
+<span>84 210 / 127 300 XP</span>
+</div>
+<div style="height: 12px; border-radius: 6px; background: #141a3a; border: 1px solid #3a4687; overflow: hidden" role="img" aria-label="Опыт: 66% до 79 уровня">
+<div style="width: 66%; height: 100%; background: #f2c14e"></div>
+</div>
+<span style="font-size: 12px; color: #b3b9dc">+1 очко статов, древо: 1 очко</span>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; flex: 1">
+<span style="font-size: 12px; color: #b3b9dc; text-transform: uppercase; letter-spacing: 0.06em">Всплывающие уведомления</span>
+<div style="display: flex; align-items: center; gap: 12px; background: #1a2148; border: 2px solid #f2c14e; border-radius: 10px; padding: 12px 14px">
+<span style="font-family: 'Pixelify Sans', sans-serif; font-size: 22px; color: #f2c14e">78</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="font-size: 15px; font-weight: 600">Новый уровень!</strong>
+<span style="font-size: 13px; color: #b3b9dc">+1 очко статов · откройте панель на C</span>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; background: #1a2148; border: 2px solid #e8604c; border-radius: 10px; padding: 12px 14px">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8604c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M12 8l-6 6M12 8l6 6M12 14l-4 4M12 14l4 4"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<strong style="font-size: 15px; font-weight: 600">Открыт тир 3 древа</strong>
+<span style="font-size: 13px; color: #b3b9dc">Лунный лорд побеждён · откройте древо на K</span>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":760,"height":300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

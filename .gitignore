@@ -1,0 +1,6 @@
+bin/
+obj/
+.vs/
+*.user
+tools/icons/node_modules/
+tools/icons/_raw/
