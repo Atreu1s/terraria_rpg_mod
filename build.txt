@@ -1,6 +1,6 @@
 displayName = RPG Mod
 author = skyli
-version = 0.1
+version = 2.0
 homepage =
 weakReferences = CalamityMod
 buildIgnore = docs/*, tools/*, *.md, .git/*, .gitignore, .vs/*, bin/*, obj/*, Properties/*, *.csproj, *.user

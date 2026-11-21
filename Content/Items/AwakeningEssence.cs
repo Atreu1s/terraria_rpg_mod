@@ -10,6 +10,8 @@ namespace RPGMod.Content.Items;
 
 public class AwakeningEssence : ModItem
 {
+    public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("CalamityMod");
+
     // Only a freshly spawned personal drop carries a source; inventory essences are ordinary materials.
     internal int BossSource = -1;
     private bool discard;

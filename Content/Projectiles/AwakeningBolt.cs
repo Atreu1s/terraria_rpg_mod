@@ -7,6 +7,8 @@ namespace RPGMod.Content.Projectiles;
 
 public class AwakeningBolt : ModProjectile
 {
+    public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("CalamityMod");
+
     public const float Speed = 14f;
     private const float HomingRange = 1200f, Inertia = 12f;
     public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.GoldenShowerFriendly}";

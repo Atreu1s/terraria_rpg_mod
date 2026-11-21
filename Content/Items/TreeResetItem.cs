@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using RPGMod.Common.Players;
+using RPGMod.Common.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -25,11 +27,20 @@ public class TreeResetItem : ModItem
         if (player.whoAmI == Main.myPlayer)
         {
             bool refund = player.GetModPlayer<RPGPlayer>().ResetTree();
-            if (refund)
-                player.QuickSpawnItem(player.GetSource_ItemUse(Item), ModContent.ItemType<AwakeningStone>());
+            if (refund && CalamityCompat.AwakeningAvailable
+                && ModContent.TryFind<ModItem>("RPGMod/AwakeningStone", out var stone))
+                player.QuickSpawnItem(player.GetSource_ItemUse(Item), stone.Type);
             Main.NewText(Language.GetTextValue(refund ? "Mods.RPGMod.Awakening2.TreeResetRefund" : "Mods.RPGMod.Awakening2.TreeReset"));
         }
         return true;
+    }
+
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        if (!CalamityCompat.AwakeningAvailable)
+            foreach (var line in tooltips)
+                if (line.Mod == "Terraria" && line.Name == "Tooltip0")
+                    line.Text = Language.GetTextValue("Mods.RPGMod.UI.TreeResetVanillaTooltip");
     }
 
     public override void AddRecipes() => CreateRecipe().AddIngredient(ItemID.Wood)

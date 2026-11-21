@@ -1,0 +1,99 @@
+﻿{
+  "date": "2026-11-21",
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "base_prompt": "docs/icons.json: prompt for each ID, unchanged",
+  "supplement_for_first_rogue": "",
+  "supplement_for_other_initial_requests": "Request a transparent 512x512 image. Keep the silhouette bold and readable at 32x32, with simple pixel clusters.",
+  "smoke_bomb_retry": "This is a harmless fictional fantasy game inventory sprite, a tiny cartoon prop with deliberately nonfunctional toy-like proportions. Depict only the stylized game icon, no realistic mechanism or instructional detail. Transparent 512x512 image with bold pixel clusters readable at 32x32.",
+  "lucky_break_redraw": "Subject clarification: the coin MUST be shiny GOLD, with bright yellow-gold and ochre flat pixel shading, not silver. A clearly readable four-leaf clover is embossed on the large coin face; use the class rose magenta only for small motion accents. One simple bold gold coin tilted while flipping, no additional objects. Preserve the coarse 32x32 pixel-art inventory-icon look. Transparent 512x512.",
+  "sources": [
+    {
+      "id": "rogue",
+      "raw": "_raw/rogue.png",
+      "initial_generator_file": "exec-fbefc913-b9a8-4830-826c-e6e50189e5aa.png"
+    },
+    {
+      "id": "assassin",
+      "raw": "_raw/assassin.png",
+      "initial_generator_file": "exec-101c9621-ca06-42f9-a4c1-8450fb628409.png"
+    },
+    {
+      "id": "trickster",
+      "raw": "_raw/trickster.png",
+      "initial_generator_file": "exec-0494129e-84f2-4dae-b367-4e9f1fed040d.png"
+    },
+    {
+      "id": "ambush",
+      "raw": "_raw/ambush.png",
+      "initial_generator_file": "exec-89f07753-8b96-40c8-ba85-ea83478aa47c.png"
+    },
+    {
+      "id": "shadow",
+      "raw": "_raw/shadow.png",
+      "initial_generator_file": "exec-fc528d5a-ef79-4d22-ba17-5ccbde338a86.png"
+    },
+    {
+      "id": "juggler",
+      "raw": "_raw/juggler.png",
+      "initial_generator_file": "exec-61bb6d9f-1418-4669-b44c-58e839cffc12.png"
+    },
+    {
+      "id": "evasion",
+      "raw": "_raw/evasion.png",
+      "initial_generator_file": "exec-e11ede4d-210d-492f-96cc-ceafbcacf183.png"
+    },
+    {
+      "id": "executioner",
+      "raw": "_raw/executioner.png",
+      "initial_generator_file": "exec-235e159d-d1e3-4e34-a6bf-cd6c69d993fc.png"
+    },
+    {
+      "id": "first_blood",
+      "raw": "_raw/first_blood.png",
+      "initial_generator_file": "exec-f2070f03-26ef-4e26-8122-1ed49b2094e9.png"
+    },
+    {
+      "id": "vanish",
+      "raw": "_raw/vanish.png",
+      "initial_generator_file": "exec-34f3ad10-94fc-46d9-ace3-25e45fedb8d8.png"
+    },
+    {
+      "id": "dusk_blade",
+      "raw": "_raw/dusk_blade.png",
+      "initial_generator_file": "exec-f379c7d2-1dbb-4835-b9ef-10e7b32fee41.png"
+    },
+    {
+      "id": "ricochet",
+      "raw": "_raw/ricochet.png",
+      "initial_generator_file": "exec-42d167d2-a170-4a15-adaa-5e55a04823cd.png"
+    },
+    {
+      "id": "bravado",
+      "raw": "_raw/bravado.png",
+      "initial_generator_file": "exec-d0a524c8-c24d-415c-b8c5-ecf964648559.png"
+    },
+    {
+      "id": "smoke_bomb",
+      "raw": "_raw/smoke_bomb.png",
+      "initial_generator_file": null,
+      "final_generator_file": "exec-ed396b72-e4e4-4119-92fc-2df2dd11c3a5.png"
+    },
+    {
+      "id": "lucky_break",
+      "raw": "_raw/lucky_break.png",
+      "initial_generator_file": "exec-b0976a37-33f7-435e-9f46-9cdd38984b19.png",
+      "final_generator_file": "exec-5493cc00-f1af-4852-a328-3fffe23b911b.png"
+    },
+    {
+      "id": "awaken_rogue",
+      "raw": "_raw/awaken_rogue.png",
+      "initial_generator_file": "exec-4290c203-0818-4713-903a-8064ee50c642.png"
+    },
+    {
+      "id": "stat_cun",
+      "raw": "_raw/stat_cun.png",
+      "initial_generator_file": "exec-1de1d3c0-7f27-43d1-817e-6ce9bfe57653.png"
+    }
+  ]
+}

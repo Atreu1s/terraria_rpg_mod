@@ -52,6 +52,12 @@ public class CharacterUISystem : ModSystem
     public override void Load()
     {
         ToggleKey = KeybindLoader.RegisterKeybind(Mod, "ToggleCharacter", "None");
+    }
+
+    public override void PostSetupContent()
+    {
+        // All ModSystem.Load hooks (including CalamityCompat) have completed.
+        // StatPanel builds its visible rows once for the selected mode.
         if (Main.dedServ)
             return;
         ui = new UserInterface();

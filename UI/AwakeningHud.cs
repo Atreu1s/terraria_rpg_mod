@@ -11,6 +11,8 @@ namespace RPGMod.UI;
 
 public class AwakeningHud : ModSystem
 {
+    public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("CalamityMod");
+
     public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
     {
         int index = layers.FindIndex(layer => layer.Name == "Vanilla: Resource Bars");

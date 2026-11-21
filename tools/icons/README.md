@@ -41,3 +41,27 @@ Recommended redraws after inspecting the 4x nearest-neighbor preview:
 
 These are visual recommendations. The automated checker validates PNG properties, not artistic consistency. See `REPORT.md` for the final validation result.
 
+
+## v2 (Calamity rogue)
+
+The 17 v2 IDs are listed in `v2-ids.json`. Generate each with its complete
+`docs/icons.json` prompt and a transparent background, save the source to
+`_raw/<id>.png`, then process only that ID:
+
+```powershell
+node tools/icons/process.js --id rogue
+node tools/icons/check.js
+node tools/icons/check-v2.js
+node tools/icons/preview.js --v2
+```
+
+Do not run `process.js` without `--id` for v2: existing v1 PNGs must stay
+unchanged. `check-v2.js` compares all 74 v1 assets against the SHA-256 hashes
+in `baseline-v1.json` and checks the 17 normalized 512x512 raw sources.
+The unchanged v1 processor produces 32x32 RGBA, binary alpha, a centered
+28x28 symbol area, nearest-neighbor downscaling and at most 16 opaque colors.
+
+`_preview_v2.png` contains the four existing roots (`warrior`, `ranger`,
+`mage`, `summoner`) followed by all 17 v2 icons, seven per row, enlarged
+exactly 4x on the same navy background as the v1 preview.
+See `docs/v2/REPORT_B.md` for visual review and generation notes.

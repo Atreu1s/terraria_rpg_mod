@@ -9,12 +9,15 @@ namespace RPGMod.Common.NPCs;
 
 public class AwakeningDropNPC : GlobalNPC
 {
+    public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("CalamityMod");
+
     private static readonly Dictionary<int, int> sources = new();
 
     public override void SetStaticDefaults()
     {
         sources.Clear();
-        if (!ModLoader.TryGetMod("CalamityMod", out var cal)) return;
+        var cal = Systems.CalamityCompat.Calamity;
+        if (cal == null) return;
         for (int i = 0; i < AwakeningPlayer.SourceNames.Length; i++)
             if (cal.TryFind<ModNPC>(AwakeningPlayer.SourceNames[i], out var boss)) sources[boss.Type] = i;
     }
@@ -23,9 +26,11 @@ public class AwakeningDropNPC : GlobalNPC
 
     public override void OnKill(NPC npc)
     {
-        if (Main.netMode == NetmodeID.MultiplayerClient || !sources.TryGetValue(npc.type, out int source)) return;
+        if (!Systems.CalamityCompat.AwakeningAvailable || Main.netMode == NetmodeID.MultiplayerClient
+            || !sources.TryGetValue(npc.type, out int source)
+            || !ModContent.TryFind<ModItem>("RPGMod/AwakeningEssence", out var essence)) return;
         if (Main.netMode == NetmodeID.SinglePlayer && Main.LocalPlayer.GetModPlayer<AwakeningPlayer>().EssenceSources.Contains(AwakeningPlayer.SourceNames[source])) return;
-        int index = Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<AwakeningEssence>(), noBroadcast: true);
+        int index = Item.NewItem(npc.GetSource_Loot(), npc.getRect(), essence.Type, noBroadcast: true);
         if (index >= Main.maxItems) return;
         ((AwakeningEssence)Main.item[index].ModItem).BossSource = source;
         if (Main.netMode == NetmodeID.Server)

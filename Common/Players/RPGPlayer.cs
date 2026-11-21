@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using RPGMod.Common.Data;
 using RPGMod.UI;
+using RPGMod.Common.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -19,7 +20,7 @@ namespace RPGMod.Common.Players;
 /// </summary>
 public class RPGPlayer : ModPlayer
 {
-    public const int StatCount = 6;
+    public const int StatCount = 7;
 
     public int Level = 1;
     /// <summary>Опыт внутри текущего уровня (0 … XPToNext(Level)).</summary>
@@ -30,6 +31,7 @@ public class RPGPlayer : ModPlayer
     public int[] Invested = new int[StatCount];
     public HashSet<string> Picked = new();
     public bool Awakened;
+    public bool PendingStoneRefund;
 
     public long XPToNext => StatMath.XPToNext(Level);
 
@@ -42,6 +44,7 @@ public class RPGPlayer : ModPlayer
         Invested = new int[StatCount];
         Picked = new HashSet<string>();
         Awakened = false;
+        PendingStoneRefund = false;
     }
 
     // ---------------- Статы ----------------
@@ -58,11 +61,12 @@ public class RPGPlayer : ModPlayer
 
     public StatBonuses Bonuses => StatMath.Bonuses(
         GetStat(Stat.Str), GetStat(Stat.Dex), GetStat(Stat.Int),
-        GetStat(Stat.Spirit), GetStat(Stat.Vit), GetStat(Stat.Luck));
+        GetStat(Stat.Spirit), GetStat(Stat.Vit), GetStat(Stat.Luck), GetStat(Stat.Cunning));
 
     /// <summary>Вложить до <paramref name="amount"/> очков в стат. Возвращает, сколько вложено.</summary>
     public int Invest(Stat s, int amount)
     {
+        if (!Enum.IsDefined(s) || (s == Stat.Cunning && !CalamityCompat.RogueAvailable)) return 0;
         int n = Math.Min(amount, FreeStatPoints);
         if (n <= 0)
             return 0;
@@ -94,8 +98,14 @@ public class RPGPlayer : ModPlayer
 
         Player.GetCritChance(DamageClass.Generic) += b.Crit;
 
+        if (CalamityCompat.Rogue is DamageClass rogue)
+        {
+            Player.GetDamage(rogue) += b.RogueDamage;
+            Player.GetAttackSpeed(rogue) += b.RogueSpeed;
+        }
+
         // Узлы древа — по порядку тиров (важно для процентов от HP/маны).
-        if (SkillTree.ByClass.TryGetValue(ClassId, out SkillNode[] nodes))
+        if (ClassIds.Available(ClassId) && SkillTree.ByClass.TryGetValue(ClassId, out SkillNode[] nodes))
             foreach (SkillNode node in nodes)
                 if (Picked.Contains(node.Id))
                     node.Apply?.Invoke(Player);
@@ -103,7 +113,7 @@ public class RPGPlayer : ModPlayer
 
     // ---------------- Класс и древо ----------------
 
-    public bool Has(string nodeId) => Picked.Contains(nodeId);
+    public bool Has(string nodeId) => ClassIds.Available(ClassId) && Picked.Contains(nodeId);
 
     /// <summary>Требование тира 1–3: (уровень, босс убит).</summary>
     public static int TierLevel(int tier)
@@ -132,7 +142,7 @@ public class RPGPlayer : ModPlayer
 
     public void PickClass(int classId)
     {
-        if (!CanPickClass() || classId <= ClassIds.None || classId >= ClassIds.Count)
+        if (!CanPickClass() || !ClassIds.Available(classId))
             return;
         ClassId = classId;
         Picked.Clear();
@@ -147,7 +157,7 @@ public class RPGPlayer : ModPlayer
     {
         if (Picked.Contains(node.Id))
             return PickState.Picked;
-        if (node.ClassId != ClassId)
+        if (node.ClassId != ClassId || !ClassIds.Available(ClassId))
             return PickState.Locked;
         SkillNode sib = SkillTree.Sibling(node);
         if (sib != null && Picked.Contains(sib.Id))
@@ -176,6 +186,12 @@ public class RPGPlayer : ModPlayer
     public override void OnEnterWorld()
     {
         lastTiers = TiersUnlocked();
+        if (Player.whoAmI == Main.myPlayer && PendingStoneRefund
+            && CalamityCompat.AwakeningAvailable && ModContent.TryFind<ModItem>("RPGMod/AwakeningStone", out var stone))
+        {
+            Player.QuickSpawnItem(Player.GetSource_Misc("PendingStoneRefund"), stone.Type);
+            PendingStoneRefund = false;
+        }
     }
 
     public override void PostUpdate()
@@ -246,8 +262,8 @@ public class RPGPlayer : ModPlayer
     public void ResetStats() => Array.Clear(Invested);
 
     /// <summary>
-    /// «Сброс древа»: класс, узлы и пробуждение. Возвращает true, если было пробуждение —
-    /// тогда вызывающий код (предмет) возвращает Камень пробуждения.
+    /// «Сброс древа»: класс, узлы и пробуждение. True — вернуть загруженный Камень сейчас;
+    /// если контент недоступен, сохраняем PendingStoneRefund до следующего входа с Calamity.
     /// </summary>
     public bool ResetTree()
     {
@@ -255,6 +271,12 @@ public class RPGPlayer : ModPlayer
         ClassId = ClassIds.None;
         Picked.Clear();
         Awakened = false;
+        if (wasAwakened && (!CalamityCompat.AwakeningAvailable
+            || !ModContent.TryFind<ModItem>("RPGMod/AwakeningStone", out _)))
+        {
+            PendingStoneRefund = true;
+            return false;
+        }
         return wasAwakened;
     }
 
@@ -267,6 +289,7 @@ public class RPGPlayer : ModPlayer
         Array.Clear(Invested);
         Picked.Clear();
         Awakened = false;
+        PendingStoneRefund = false;
     }
 
     // ---------------- Сохранение ----------------
@@ -279,6 +302,7 @@ public class RPGPlayer : ModPlayer
         tag["invested"] = Invested.ToList();
         tag["picked"] = Picked.ToList();
         tag["awakened"] = Awakened;
+        tag["pendingStoneRefund"] = PendingStoneRefund;
     }
 
     public override void LoadData(TagCompound tag)
@@ -318,6 +342,8 @@ public class RPGPlayer : ModPlayer
         }
 
         Awakened = tag.GetBool("awakened");
+        PendingStoneRefund = tag.GetBool("pendingStoneRefund");
+        if (!CalamityCompat.RogueAvailable) Invested[(int)Stat.Cunning] = 0; // Free points are derived from the remaining investments.
     }
 
     // ---------------- Мультиплеер ----------------
@@ -343,6 +369,7 @@ public class RPGPlayer : ModPlayer
         foreach (string id in Picked)
             w.Write(id);
         w.Write(Awakened);
+        w.Write(PendingStoneRefund);
     }
 
     public void ReceiveSync(BinaryReader r)
@@ -357,6 +384,7 @@ public class RPGPlayer : ModPlayer
         for (int i = 0; i < count; i++)
             Picked.Add(r.ReadString());
         Awakened = r.ReadBoolean();
+        PendingStoneRefund = r.ReadBoolean();
     }
 
     /// <summary>Снимок состояния для сравнения в SendClientChanges (как prevProps в React).</summary>
@@ -369,6 +397,7 @@ public class RPGPlayer : ModPlayer
         clone.Invested = (int[])Invested.Clone();
         clone.Picked = new HashSet<string>(Picked);
         clone.Awakened = Awakened;
+        clone.PendingStoneRefund = PendingStoneRefund;
     }
 
     public override void SendClientChanges(ModPlayer clientPlayer)
@@ -379,7 +408,8 @@ public class RPGPlayer : ModPlayer
             || old.ClassId != ClassId
             || !old.Invested.SequenceEqual(Invested)
             || !old.Picked.SetEquals(Picked)
-            || old.Awakened != Awakened;
+            || old.Awakened != Awakened
+            || old.PendingStoneRefund != PendingStoneRefund;
 
         if (changed)
             SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);

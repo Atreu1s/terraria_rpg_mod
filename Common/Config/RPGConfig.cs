@@ -241,6 +241,209 @@ public class RPGConfig : ModConfig
     [DefaultValue(0.3f)]
     public float LuckLuck { get; set; } = 0.3f;
 
+    // ---------- Rogue (DESIGN_V2 sections 4-5) ----------
+    [Header("Rogue")]
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.6f)]
+    public float CunningDamage { get; set; } = 0.6f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.2f)]
+    public float CunningSpeed { get; set; } = 0.2f;
+
+    [Range(0f, 2f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.55f)]
+    public float RogueCunningGrowth { get; set; } = 0.55f;
+
+    [Range(0f, 2f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float RogueDexGrowth { get; set; } = 0.1f;
+
+    [Range(0f, 2f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.2f)]
+    public float RogueVitGrowth { get; set; } = 0.2f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.05f)]
+    public float RogueRootDamage { get; set; } = 0.05f;
+
+    [Range(0f, 100f)]
+    [Increment(0.01f)]
+    [DefaultValue(5f)]
+    public float RogueRootCrit { get; set; } = 5f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.12f)]
+    public float AssassinDamage { get; set; } = 0.12f;
+
+    [Range(0f, 100f)]
+    [Increment(0.01f)]
+    [DefaultValue(6f)]
+    public float AssassinCrit { get; set; } = 6f;
+
+    [Range(0f, 0.9f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float AssassinLifePenalty { get; set; } = 0.1f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.15f)]
+    public float TricksterAttackSpeed { get; set; } = 0.15f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float TricksterMoveSpeed { get; set; } = 0.1f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.06f)]
+    public float TricksterDamagePenalty { get; set; } = 0.06f;
+
+    [Range(1, 600)]
+    [DefaultValue(120)]
+    public int ShadowDelay { get; set; } = 120;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.5f)]
+    public float AmbushDamage { get; set; } = 0.5f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.25f)]
+    public float ShadowDamage { get; set; } = 0.25f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.03f)]
+    public float JugglerSpeed { get; set; } = 0.03f;
+
+    [Range(1, 600)]
+    [DefaultValue(180)]
+    public int JugglerDuration { get; set; } = 180;
+
+    [Range(1, 20)]
+    [DefaultValue(5)]
+    public int JugglerMaxStacks { get; set; } = 5;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float EvasionChance { get; set; } = 0.1f;
+
+    [Range(1, 1800)]
+    [DefaultValue(300)]
+    public int EvasionCooldown { get; set; } = 300;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.3f)]
+    public float ExecutionerDamage { get; set; } = 0.3f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.3f)]
+    public float ExecutionerThreshold { get; set; } = 0.3f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float FirstBloodDamage { get; set; } = 0.1f;
+
+    [Range(1, 600)]
+    [DefaultValue(300)]
+    public int FirstBloodDuration { get; set; } = 300;
+
+    [Range(1f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(1.25f)]
+    public float DuskBladeCritMultiplier { get; set; } = 1.25f;
+
+    [Range(0, 200)]
+    [DefaultValue(15)]
+    public int DuskBladeArmorPenetration { get; set; } = 15;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.4f)]
+    public float RicochetDamage { get; set; } = 0.4f;
+
+    [Range(1, 100)]
+    [DefaultValue(15)]
+    public int RicochetRangeTiles { get; set; } = 15;
+
+    [Range(1, 600)]
+    [DefaultValue(20)]
+    public int RicochetInterval { get; set; } = 20;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.15f)]
+    public float BravadoMoveSpeed { get; set; } = 0.15f;
+
+    [Range(0, 100)]
+    [DefaultValue(10)]
+    public int BravadoCrit { get; set; } = 10;
+
+    [Range(1, 600)]
+    [DefaultValue(90)]
+    public int SmokeBombImmunity { get; set; } = 90;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.4f)]
+    public float SmokeBombDamage { get; set; } = 0.4f;
+
+    [Range(1, 1000)]
+    [DefaultValue(20)]
+    public int LuckyBreakLuckPerStep { get; set; } = 20;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.01f)]
+    public float LuckyBreakChancePerStep { get; set; } = 0.01f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.1f)]
+    public float LuckyBreakMaxChance { get; set; } = 0.1f;
+
+    [Range(0f, 1f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.05f)]
+    public float LuckyBreakHeal { get; set; } = 0.05f;
+
+    [Range(1, 100)]
+    [DefaultValue(8)]
+    public int RogueAwakeningHits { get; set; } = 8;
+
+    [Range(1, 100)]
+    [DefaultValue(5)]
+    public int TricksterAwakeningHits { get; set; } = 5;
+
+    [Range(1, 9)]
+    [DefaultValue(3)]
+    public int RogueAwakeningDaggers { get; set; } = 3;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(0.6f)]
+    public float RogueAwakeningDamage { get; set; } = 0.6f;
+
+    [Range(0f, 5f)]
+    [Increment(0.01f)]
+    [DefaultValue(1f)]
+    public float AssassinAwakeningDamage { get; set; } = 1f;
+
     // ---------- Отладка ----------
     [Header("Debug")]
 

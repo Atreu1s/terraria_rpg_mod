@@ -9,7 +9,11 @@ const patterns = {
  '0':'111101101101111','1':'010110010010111','2':'110001010100111','3':'110001010001110','4':'101101111001001',
  '5':'111100110001110','6':'011100111101111','7':'111001010010010','8':'111101111101111','9':'111101111001110'
 };
-const cw = 160, ch = 152, cols = 10, rows = Math.ceil(entries.length / cols);
+const v2 = process.argv.includes('--v2');
+const ids = v2 ? ['warrior', 'ranger', 'mage', 'summoner', ...require('./v2-ids.json')] : entries.map(e => e.id);
+const selected = ids.map(id => entries.find(e => e.id === id));
+const filename = v2 ? '_preview_v2.png' : '_preview.png';
+const cw = 160, ch = 152, cols = v2 ? 7 : 10, rows = Math.ceil(selected.length / cols);
 const canvas = new PNG({ width: cols * cw, height: rows * ch });
 for (let i = 0; i < canvas.data.length; i += 4) canvas.data.set([47, 58, 150, 255], i);
 function pixel(x, y, color) { canvas.data.set(color, (y * canvas.width + x) * 4); }
@@ -21,7 +25,7 @@ function label(text, cx, y) {
   });
 }
 let missing = 0;
-entries.forEach((e, i) => {
+selected.forEach((e, i) => {
   const ox = i % cols * cw, oy = Math.floor(i / cols) * ch;
   try {
     const src = read(path.join(root, e.output));
@@ -33,7 +37,7 @@ entries.forEach((e, i) => {
   } catch (error) { missing++; console.error(e.id + ': ' + error.message); }
   label(e.id, ox + cw / 2, oy + 136);
 });
-write(path.join(__dirname, '_preview.png'), canvas);
-console.log(`Preview: tools/icons/_preview.png (${entries.length - missing}/${entries.length} icons, manifest order, 10 per row)`);
+write(path.join(__dirname, filename), canvas);
+console.log(`Preview: tools/icons/${filename} (${selected.length - missing}/${selected.length} icons, ${cols} per row)`);
 if (missing) process.exitCode = 1;
 

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using RPGMod.Common.Config;
+using RPGMod.Common.Systems;
 
 namespace RPGMod.Common.Data;
 
@@ -54,12 +56,42 @@ public static class SkillTree
         "legion", "unity", "hive", "devourer", "sic_em", "pack_heal", "alpha", "sacrifice",
     };
 
+    // Always registered so disabling Calamity preserves the selected nodes.
+    private static readonly string[] rogue =
+    {
+        "rogue", "assassin", "trickster", "ambush", "shadow", "juggler", "evasion",
+        "executioner", "first_blood", "vanish", "dusk_blade", "ricochet", "bravado", "smoke_bomb", "lucky_break",
+    };
+
     /// <summary>
     /// Простые (безусловные) эффекты: класс и тир 1, плюс постоянные части тиров 2–3.
     /// Проценты урона/скорости — аддитивные (как у брони), проценты HP/маны — от итогового значения.
     /// </summary>
     private static readonly Dictionary<string, Action<Player>> simpleEffects = new()
     {
+        ["rogue"] = p =>
+        {
+            if (CalamityCompat.Rogue is not DamageClass damage) return;
+            var c = RPGConfig.Instance;
+            p.GetDamage(damage) += c.RogueRootDamage;
+            p.GetCritChance(damage) += c.RogueRootCrit;
+        },
+        ["assassin"] = p =>
+        {
+            if (CalamityCompat.Rogue is not DamageClass damage) return;
+            var c = RPGConfig.Instance;
+            p.GetDamage(damage) += c.AssassinDamage;
+            p.GetCritChance(damage) += c.AssassinCrit;
+            p.statLifeMax2 = (int)(p.statLifeMax2 * (1f - c.AssassinLifePenalty));
+        },
+        ["trickster"] = p =>
+        {
+            if (CalamityCompat.Rogue is not DamageClass damage) return;
+            var c = RPGConfig.Instance;
+            p.GetAttackSpeed(damage) += c.TricksterAttackSpeed;
+            p.moveSpeed += c.TricksterMoveSpeed;
+            p.GetDamage(damage) -= c.TricksterDamagePenalty;
+        },
         // ---- Воин ----
         ["warrior"] = p =>
         {
@@ -142,6 +174,7 @@ public static class SkillTree
         Register(ClassIds.Ranger, ranger);
         Register(ClassIds.Mage, mage);
         Register(ClassIds.Summoner, summoner);
+        Register(ClassIds.Rogue, rogue);
     }
 
     private static void Register(int classId, string[] ids)

@@ -1,4 +1,5 @@
 HUD: {
+	InShadow: В тени
 	TierOpenTitle: Открыт тир {0} древа
 	TierOpenSubtitle: Потратьте очко древа в окне «Статус»
 	XPGain: +{0} XP
@@ -13,6 +14,7 @@ HUD: {
 }
 
 Commands: {
+	Mode: calamity {0}, rogue class found {1}
 	Description: Отладка RPG-мода (включается в конфиге)
 	Disabled: Команда /rpg выключена. Включите «Отладочные команды» в настройках мода.
 	State: Ур. {0}, опыт {1}/{2}, класс {3}, узлов {4} | хардмод {5}, механики {6}, Лунный лорд {7}
@@ -20,9 +22,225 @@ Commands: {
 
 Configs: {
 	RPGConfig: {
+		CunningDamage: {
+			Label: Хитрость: максимум урона разбойника
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		CunningSpeed: {
+			Label: Хитрость: максимум скорости атаки разбойника
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		RogueCunningGrowth: {
+			Label: Разбойник: Хитрость за уровень
+			Tooltip: Очков за уровень (округление вниз); действует с Calamity.
+		}
+
+		RogueDexGrowth: {
+			Label: Разбойник: Ловкость за уровень
+			Tooltip: Очков за уровень (округление вниз); действует с Calamity.
+		}
+
+		RogueVitGrowth: {
+			Label: Разбойник: Выносливость за уровень
+			Tooltip: Очков за уровень (округление вниз); действует с Calamity.
+		}
+
+		RogueRootDamage: {
+			Label: Корень Разбойника: урон
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		RogueRootCrit: {
+			Label: Корень Разбойника: шанс крита
+			Tooltip: Процентные пункты шанса крита разбойника (5 = +5%).
+		}
+
+		AssassinDamage: {
+			Label: Убийца: урон
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		AssassinCrit: {
+			Label: Убийца: шанс крита
+			Tooltip: Процентные пункты шанса крита разбойника (5 = +5%).
+		}
+
+		AssassinLifePenalty: {
+			Label: Убийца: штраф макс. HP
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		TricksterAttackSpeed: {
+			Label: Ловкач: скорость атаки
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		TricksterMoveSpeed: {
+			Label: Ловкач: скорость передвижения
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
+		TricksterDamagePenalty: {
+			Label: Ловкач: штраф урона
+			Tooltip: Доля (0,1 = 10%); действует с Calamity.
+		}
+
 		DisplayName: Настройки RPG
 
+		ShadowDelay: {
+			Label: Подготовка Тени (тики)
+			Tooltip: ""
+		}
+
+		AmbushDamage: {
+			Label: Бонус урона Засады
+			Tooltip: ""
+		}
+
+		ShadowDamage: {
+			Label: Бонус урона Тени
+			Tooltip: ""
+		}
+
+		JugglerSpeed: {
+			Label: Скорость атаки Жонглёра за стак
+			Tooltip: ""
+		}
+
+		JugglerDuration: {
+			Label: Длительность стаков Жонглёра (тики)
+			Tooltip: ""
+		}
+
+		JugglerMaxStacks: {
+			Label: Максимум стаков Жонглёра
+			Tooltip: ""
+		}
+
+		EvasionChance: {
+			Label: Шанс уклонения
+			Tooltip: ""
+		}
+
+		EvasionCooldown: {
+			Label: Перезарядка уклонения (тики)
+			Tooltip: ""
+		}
+
+		ExecutionerDamage: {
+			Label: Бонус урона Палача
+			Tooltip: ""
+		}
+
+		ExecutionerThreshold: {
+			Label: Порог здоровья цели для Палача
+			Tooltip: ""
+		}
+
+		FirstBloodDamage: {
+			Label: Урон Первой крови за секунду
+			Tooltip: ""
+		}
+
+		FirstBloodDuration: {
+			Label: Длительность Первой крови (тики)
+			Tooltip: ""
+		}
+
+		DuskBladeCritMultiplier: {
+			Label: Множитель критического урона Сумеречного клинка
+			Tooltip: ""
+		}
+
+		DuskBladeArmorPenetration: {
+			Label: Пробитие защиты Сумеречного клинка
+			Tooltip: ""
+		}
+
+		RicochetDamage: {
+			Label: Доля урона Рикошета
+			Tooltip: ""
+		}
+
+		RicochetRangeTiles: {
+			Label: Дальность Рикошета (блоки)
+			Tooltip: ""
+		}
+
+		RicochetInterval: {
+			Label: Интервал Рикошета (тики)
+			Tooltip: ""
+		}
+
+		BravadoMoveSpeed: {
+			Label: Скорость передвижения от Куража
+			Tooltip: ""
+		}
+
+		BravadoCrit: {
+			Label: Шанс крита от Куража (процентные пункты)
+			Tooltip: ""
+		}
+
+		SmokeBombImmunity: {
+			Label: Неуязвимость от Дымовой шашки (тики)
+			Tooltip: ""
+		}
+
+		SmokeBombDamage: {
+			Label: Бонус урона Дымовой шашки
+			Tooltip: ""
+		}
+
+		LuckyBreakLuckPerStep: {
+			Label: Удача за ступень Счастливого случая
+			Tooltip: ""
+		}
+
+		LuckyBreakChancePerStep: {
+			Label: Шанс уклонения за ступень Счастливого случая
+			Tooltip: ""
+		}
+
+		LuckyBreakMaxChance: {
+			Label: Максимальный бонус уклонения от Счастливого случая
+			Tooltip: ""
+		}
+
+		LuckyBreakHeal: {
+			Label: Доля лечения от Счастливого случая
+			Tooltip: ""
+		}
+
+		RogueAwakeningHits: {
+			Label: Интервал попаданий пробуждения Разбойника
+			Tooltip: ""
+		}
+
+		TricksterAwakeningHits: {
+			Label: Интервал попаданий пробуждения Ловкача
+			Tooltip: ""
+		}
+
+		RogueAwakeningDaggers: {
+			Label: Кинжалы в веере пробуждения
+			Tooltip: ""
+		}
+
+		RogueAwakeningDamage: {
+			Label: Доля урона кинжала пробуждения
+			Tooltip: ""
+		}
+
+		AssassinAwakeningDamage: {
+			Label: Доля урона кинжала пробуждения Убийцы
+			Tooltip: ""
+		}
+
 		Headers: {
+			Rogue: Разбойник
 			Experience: Опыт за монстров
 			LevelDifference: Разница уровней
 			Bosses: Боссы
@@ -243,6 +461,7 @@ Configs: {
 		}
 
 		DebugCommands: {
+			Mode: calamity {0}, rogue class found {1}
 			Label: Отладочные команды
 			Tooltip: Разрешает чат-команду /rpg (уровень, опыт, флаги боссов, сброс)
 		}
@@ -264,6 +483,8 @@ Configs: {
 }
 
 UI: {
+	RogueInactive: Разбойник неактивен: нужен Calamity Mod. Сброс древа позволит выбрать другой класс
+	TreeResetVanillaTooltip: Сбрасывает класс и древо навыков
 	ColumnClass: Класс
 	ColumnTier: Тир {0} · {1}
 	TierLabel: Тир {0} · {1}
@@ -300,6 +521,11 @@ UI: {
 }
 
 Classes: {
+	rogue: {
+		Name: Разбойник
+		Growth: Прирост за уровень: Хитрость 0,55 · Ловкость 0,1 · Выносливость 0,2
+	}
+
 	none.Name: Без класса
 
 	warrior: {
@@ -324,6 +550,13 @@ Classes: {
 }
 
 Stats: {
+	cun: {
+		Name: Хитрость
+		Letter: Х
+		Line1: +{0}% урона разбойника
+		Line2: +{0}% скорости атаки разбойника
+	}
+
 	str: {
 		Name: Сила
 		Letter: С
@@ -370,6 +603,81 @@ Stats: {
 Keybinds.ToggleCharacter.DisplayName: Окно персонажа
 
 Nodes: {
+	rogue: {
+		Name: Разбойник
+		Effect: +5% урона разбойника, +5% крита разбойника
+	}
+
+	assassin: {
+		Name: Убийца
+		Effect: +12% урона, +6% крита разбойника; −10% макс. HP
+	}
+
+	trickster: {
+		Name: Ловкач
+		Effect: +15% скорости атаки разбойника, +10% скорости передвижения; −6% урона разбойника
+	}
+
+	ambush: {
+		Name: Засада
+		Effect: Первый удар разбойника по врагу с полным HP наносит +50%
+	}
+
+	shadow: {
+		Name: Тень
+		Effect: Открывает «В тени»: удар из тени +25% урона и гарантированный крит
+	}
+
+	juggler: {
+		Name: Жонглёр
+		Effect: Попадание разбойника даёт стак +3% скорости атаки разбойника на 3 с, до 5 стаков
+	}
+
+	evasion: {
+		Name: Уклонение
+		Effect: 10% шанс полностью избежать удара, перезарядка 5 с
+	}
+
+	executioner: {
+		Name: Палач
+		Effect: +30% урона разбойника по врагам ниже 30% HP
+	}
+
+	first_blood: {
+		Name: Первая кровь
+		Effect: Удар Засады вешает кровотечение: 10% урона удара в секунду, 5 с
+	}
+
+	vanish: {
+		Name: Исчезновение
+		Effect: Убийство врага сразу возвращает «в тени»
+	}
+
+	dusk_blade: {
+		Name: Сумеречный клинок
+		Effect: Удар из тени: крит ×2,5 вместо ×2 и игнор 15 защиты
+	}
+
+	ricochet: {
+		Name: Рикошет
+		Effect: На 5 стаках попадание выпускает осколок в ближайшего другого врага в 15 блоках на 40% урона, не чаще 3 раз в секунду
+	}
+
+	bravado: {
+		Name: Кураж
+		Effect: На 5 стаках: +15% скорости передвижения и +10% крита разбойника
+	}
+
+	smoke_bomb: {
+		Name: Дымовая шашка
+		Effect: После уклонения: 1,5 с неуязвимости и следующий удар разбойника +40%
+	}
+
+	lucky_break: {
+		Name: Счастливый случай
+		Effect: +1% шанса уклонения за каждые 20 Удачи, до +10%; уклонение лечит 5% макс. HP
+	}
+
 	warrior: {
 		Name: Воин
 		Effect: +5% урона ближнего боя, +20 HP
@@ -672,6 +980,12 @@ Nodes: {
 }
 
 Awakening: {
+	rogue: {
+		Name: Повелитель теней
+		Effect: Каждое 8-е попадание разбойника выпускает веер из 3 теневых кинжалов по 60% урона (самонаводятся)
+		Bonus: Убийца: кинжалы по 100% · Ловкач: каждое 5-е попадание
+	}
+
 	warrior: {
 		Name: Аватар войны
 		Effect: Удары копят Пыл; на полной шкале 8 с: +30% урона, +20% скорости атаки
@@ -723,6 +1037,11 @@ Items: {
 	}
 }
 
+Projectiles: {
+	ShadowDagger.DisplayName: Теневой кинжал
+	AwakeningBolt.DisplayName: Око бури
+}
+
 Awakening2: {
 	Fervor: Пыл
 	Awakened: Пробуждение: {0}!
@@ -732,5 +1051,3 @@ Awakening2: {
 	TreeReset: Класс и древо навыков сброшены.
 	TreeResetRefund: Класс и древо навыков сброшены. Камень пробуждения возвращён.
 }
-
-Projectiles.AwakeningBolt.DisplayName: Око бури

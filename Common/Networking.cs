@@ -17,6 +17,7 @@ public enum MessageType : byte
     DebugDowned,
     /// <summary>Клиент ↔ сервер: стаки «Тысячи укусов» и метки хлыста призывателя на NPC.</summary>
     SummonerStacks,
+    RogueBleed,
 }
 
 /// <summary>
@@ -63,6 +64,9 @@ public static class Networking
             }
             case MessageType.SummonerStacks:
                 Players.Nodes.SummonerNodeNetwork.Receive(reader, whoAmI);
+                break;
+            case MessageType.RogueBleed:
+                NPCs.RogueBleedNPC.Receive(reader, whoAmI);
                 break;
             default:
                 mod.Logger.Warn($"Unknown RPGMod packet type: {type}");

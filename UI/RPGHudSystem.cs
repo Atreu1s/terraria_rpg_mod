@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
 using RPGMod.Common.Data;
 using RPGMod.Common.Players;
+using RPGMod.Common.Players.Nodes;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Localization;
@@ -129,12 +130,20 @@ public class RPGHudSystem : ModSystem
         UIDraw.Text(sb, xpText, new Vector2(right - xpWidth, hudY + 10), SecondaryText, 0.75f);
 
         // Полоса опыта 12 px
-        var bar = new Rectangle(left, hudY + 32, right - left, 12);
+        bool inShadow = Main.LocalPlayer.GetModPlayer<RogueNodePlayer>().InShadow;
+        var shadowIcon = new Rectangle(right - 23, hudY + 27, 23, 23);
+        var bar = new Rectangle(left, hudY + 32, (inShadow ? shadowIcon.Left - 6 : right) - left, 12);
         UIDraw.RoundedRect(sb, bar, BarBack, BarBorder, 1, radius: 6);
         float progress = need > 0 ? MathHelper.Clamp((float)rpg.XP / need, 0f, 1f) : 0f;
         int fillW = (int)((bar.Width - 2) * progress);
         if (fillW > 0)
             UIDraw.RoundedRect(sb, new Rectangle(bar.X + 1, bar.Y + 1, fillW, bar.Height - 2), AwakenGold, null, 0, radius: 5);
+
+        if (inShadow)
+        {
+            Theme.Slot(sb, shadowIcon, dark: true);
+            Theme.IconOrLetter(sb, Icons.Skill("shadow"), "S", shadowIcon, Color.White, classColor);
+        }
 
         // Строка очков (статы и древо появятся на этапах 2–3)
         string pointsText = Language.GetTextValue("Mods.RPGMod.HUD.Points", Math.Max(0, rpg.FreeStatPoints), rpg.TreePoints());
@@ -144,8 +153,10 @@ public class RPGHudSystem : ModSystem
         if (new Rectangle(HudX, hudY, HudW, HudH).Contains(Main.MouseScreen.ToPoint()))
         {
             Main.LocalPlayer.mouseInterface = true;
-            Terraria.ModLoader.UI.UICommon.TooltipMouseText(Language.GetTextValue("Mods.RPGMod.HUD.XPTooltip",
-                (int)(progress * 100), rpg.Level + 1));
+            string tooltip = inShadow && shadowIcon.Contains(Main.MouseScreen.ToPoint())
+                ? Language.GetTextValue("Mods.RPGMod.HUD.InShadow")
+                : Language.GetTextValue("Mods.RPGMod.HUD.XPTooltip", (int)(progress * 100), rpg.Level + 1);
+            Terraria.ModLoader.UI.UICommon.TooltipMouseText(tooltip);
         }
     }
 
@@ -171,6 +182,7 @@ public class RPGHudSystem : ModSystem
         2 => new Color(92, 196, 97),   // Стрелок
         3 => new Color(167, 123, 240), // Маг
         4 => new Color(60, 200, 208),  // Призыватель
+        ClassIds.Rogue => new Color(212, 107, 176),
         _ => NoClassGray,
     };
 

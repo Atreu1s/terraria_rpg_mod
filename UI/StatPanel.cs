@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -24,11 +25,13 @@ public class StatPanel : UIElement
     {
         Width.Set(W, 0f);
         Height.Set(H, 0f);
-        for (int i = 0; i < StatInfo.All.Length; i++)
+        var stats = StatIds.Visible().ToArray();
+        int step = Math.Min(RowH + Gap, (H - Pad - RowsTop) / stats.Length);
+        for (int i = 0; i < stats.Length; i++)
         {
-            var row = new StatRow(StatInfo.All[i]);
+            var row = new StatRow(stats[i]);
             row.Left.Set(Pad, 0f);
-            row.Top.Set(RowsTop + i * (RowH + Gap), 0f);
+            row.Top.Set(RowsTop + i * step, 0f);
             row.Width.Set(W - Pad * 2, 0f);
             row.Height.Set(RowH, 0f);
             Append(row);
@@ -153,6 +156,8 @@ public class StatRow : UIElement
                          Language.GetTextValue(k + ".Line2", b.MaxMana, Pct(b.ManaCost))),
             Stat.Spirit => (Language.GetTextValue(k + ".Line1", Pct(b.MinionDamage)),
                             Language.GetTextValue(k + ".Line2", b.MinionSlots, Pct(b.WhipBonus))),
+            Stat.Cunning => (Language.GetTextValue(k + ".Line1", Pct(b.RogueDamage)),
+                             Language.GetTextValue(k + ".Line2", Pct(b.RogueSpeed))),
             Stat.Vit => (Language.GetTextValue(k + ".Line1", b.MaxLife),
                          Language.GetTextValue(k + ".Line2", Pct(b.DamageReduction), b.LifeRegen)),
             _ => (Language.GetTextValue(k + ".Line1", b.Crit.ToString("0.#")),

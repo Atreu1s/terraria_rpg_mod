@@ -37,8 +37,6 @@ public static class Icons
 /// <summary>Справочные данные по статам для UI.</summary>
 public static class StatInfo
 {
-    public static readonly Stat[] All = { Stat.Str, Stat.Dex, Stat.Int, Stat.Spirit, Stat.Vit, Stat.Luck };
-
     /// <summary>Ключ для иконок и локализации (совпадает с docs/icons.json).</summary>
     public static string Key(Stat s) => s switch
     {
@@ -46,6 +44,7 @@ public static class StatInfo
         Stat.Dex => "agi",
         Stat.Int => "int",
         Stat.Spirit => "spi",
+        Stat.Cunning => "cun",
         Stat.Vit => "vit",
         _ => "luck",
     };
@@ -57,6 +56,7 @@ public static class StatInfo
         Stat.Dex => new Color(143, 240, 143),
         Stat.Int => new Color(201, 168, 255),
         Stat.Spirit => new Color(127, 240, 245),
+        Stat.Cunning => new Color(212, 107, 176),
         Stat.Vit => new Color(255, 194, 122),
         _ => new Color(255, 224, 102),
     };

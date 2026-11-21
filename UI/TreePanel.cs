@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RPGMod.Common.Data;
 using RPGMod.Common.Players;
+using RPGMod.Common.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -101,6 +103,12 @@ public class TreePanel : UIElement
             DrawClassChoice(sb, rpg, area);
             DrawClassDescription(sb, rpg, aside);
         }
+        else if (!ClassIds.Available(rpg.ClassId))
+        {
+            int bannerY = area.Y + 24;
+            DrawWrapped(sb, Language.GetTextValue("Mods.RPGMod.UI.RogueInactive"),
+                area.X, ref bannerY, area.Width, Theme.Accent, 0.85f);
+        }
         else
         {
             DrawColumnLabels(sb, area);
@@ -113,8 +121,10 @@ public class TreePanel : UIElement
 
     private void DrawClassChoice(SpriteBatch sb, RPGPlayer rpg, Rectangle area)
     {
-        const int big = 88, gap = 110;
-        int total = 4 * big + 3 * gap;
+        int[] classes = ClassIds.AvailableClasses().ToArray();
+        const int big = 88;
+        int gap = Math.Min(110, (area.Width - 2 * Pad - classes.Length * big) / Math.Max(1, classes.Length - 1));
+        int total = classes.Length * big + (classes.Length - 1) * gap;
         int x0 = area.X + (area.Width - total) / 2;
         int y = area.Y + area.Height / 2 - big / 2 - 40;
 
@@ -124,9 +134,9 @@ public class TreePanel : UIElement
             UIDraw.TextCentered(sb, Language.GetTextValue("Mods.RPGMod.UI.ClassFromLevel", RPGPlayer.TierLevel(0)),
                 new Vector2(area.Center.X, y - 30), Theme.Accent, 0.9f);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < classes.Length; i++)
         {
-            int classId = ClassIds.Warrior + i;
+            int classId = classes[i];
             string key = ClassIds.Key(classId);
             var slot = new Rectangle(x0 + i * (big + gap), y, big, big);
             Color col = RPGHudSystem.ClassColor(classId);
@@ -236,7 +246,7 @@ public class TreePanel : UIElement
     /// <summary>Рисует узел; возвращает true, если мышь над ним.</summary>
     private bool DrawNode(SpriteBatch sb, RPGPlayer rpg, SkillNode node, RPGPlayer.PickState state, Rectangle slot)
     {
-        bool awakened = node.Tier == 3 && state == RPGPlayer.PickState.Picked && rpg.Awakened;
+        bool awakened = CalamityCompat.AwakeningAvailable && node.Tier == 3 && state == RPGPlayer.PickState.Picked && rpg.Awakened;
         bool closed = state is RPGPlayer.PickState.Locked or RPGPlayer.PickState.BranchClosed;
         float op = state == RPGPlayer.PickState.BranchClosed ? 0.45f : 1f;
         float time = (float)Main.timeForVisualEffects / 60f;
@@ -344,7 +354,7 @@ public class TreePanel : UIElement
     /// <summary>Слот пробуждения внизу панели описания (виден после Лунного лорда, DESIGN §5).</summary>
     private static void DrawAwakeningSlot(SpriteBatch sb, RPGPlayer rpg, Rectangle aside)
     {
-        if (!NPC.downedMoonlord && !rpg.Awakened)
+        if (!CalamityCompat.AwakeningAvailable || (!NPC.downedMoonlord && !rpg.Awakened))
             return;
 
         int x = aside.X + 14, w = aside.Width - 28;

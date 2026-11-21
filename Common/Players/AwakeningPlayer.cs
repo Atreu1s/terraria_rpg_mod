@@ -31,7 +31,7 @@ public class AwakeningPlayer : ModPlayer
     private int shots, infiniteTime, infiniteCooldown, lastClass;
     private float stolenLife;
     private RPGPlayer Rpg => Player.GetModPlayer<RPGPlayer>();
-    private bool Active(int classId) => Rpg.Awakened && Rpg.ClassId == classId;
+    private bool Active(int classId) => Systems.CalamityCompat.AwakeningAvailable && Rpg.Awakened && Rpg.ClassId == classId;
     internal bool InfiniteMana => Active(ClassIds.Mage) && infiniteTime > 0;
     internal bool CanSupplyMana => Active(ClassIds.Mage) && (infiniteTime > 0 || infiniteCooldown == 0);
 
@@ -58,7 +58,7 @@ public class AwakeningPlayer : ModPlayer
     public override void PostUpdateEquips()
     {
         if (infiniteCooldown > 0) infiniteCooldown--;
-        if (!Rpg.Awakened || lastClass != Rpg.ClassId)
+        if (!Systems.CalamityCompat.AwakeningAvailable || !Rpg.Awakened || lastClass != Rpg.ClassId)
             ClearEffects();
         lastClass = Rpg.ClassId;
         if (FervorTime > 0) FervorTime--;
@@ -128,6 +128,7 @@ public class AwakeningPlayer : ModPlayer
     public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         if (!Active(ClassIds.Ranger) || !item.CountsAsClass(DamageClass.Ranged) || Player.whoAmI != Main.myPlayer) return true;
+        if (!ModContent.TryFind<ModProjectile>("RPGMod/AwakeningBolt", out var bolt)) return true;
         if (++shots < (Rpg.Has("sniper") ? SniperInterval : RangerInterval)) return true;
         shots = 0;
         int count = Rpg.Has("gunner") ? GunnerBolts : 1;
@@ -136,7 +137,7 @@ public class AwakeningPlayer : ModPlayer
         for (int i = 0; i < count; i++)
         {
             Vector2 boltVelocity = direction.RotatedBy((i - (count - 1) / 2f) * .15f) * AwakeningBolt.Speed;
-            Projectile.NewProjectile(source, position, boltVelocity, ModContent.ProjectileType<AwakeningBolt>(), boltDamage, knockback, Player.whoAmI);
+            Projectile.NewProjectile(source, position, boltVelocity, bolt.Type, boltDamage, knockback, Player.whoAmI);
         }
         return true;
     }

@@ -516,5 +516,124 @@
     "group": "item",
     "output": "Content/Items/TreeResetItem.png",
     "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: free, readable as an in-game item sprite. Subject: a small corked glass bottle with a silver sapling growing inside."
+  },
+  {
+    "id": "rogue",
+    "name_ru": "Разбойник",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/rogue.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a hooded figure's shadowed face with two glinting eyes above a pair of crossed throwing daggers."
+  },
+  {
+    "id": "assassin",
+    "name_ru": "Убийца",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/assassin.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a curved silver dagger dripping a single rose-magenta drop."
+  },
+  {
+    "id": "trickster",
+    "name_ru": "Ловкач",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/trickster.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a spinning playing card with a small dagger stuck through it."
+  },
+  {
+    "id": "ambush",
+    "name_ru": "Засада",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/ambush.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a dagger thrusting out from a dark bush with two glowing eyes."
+  },
+  {
+    "id": "shadow",
+    "name_ru": "Тень",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/shadow.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a dark plum silhouette of a crouching figure dissolving into smoke."
+  },
+  {
+    "id": "juggler",
+    "name_ru": "Жонглёр",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/juggler.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: three throwing knives arranged in a circular juggling arc."
+  },
+  {
+    "id": "evasion",
+    "name_ru": "Уклонение",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/evasion.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a blurred afterimage of a running figure with motion lines."
+  },
+  {
+    "id": "executioner",
+    "name_ru": "Палач",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/executioner.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a heavy hooded executioner's blade above a cracked skull."
+  },
+  {
+    "id": "first_blood",
+    "name_ru": "Первая кровь",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/first_blood.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a dagger tip with three falling crimson blood drops."
+  },
+  {
+    "id": "vanish",
+    "name_ru": "Исчезновение",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/vanish.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a puff of grey smoke with an empty hood fading inside it."
+  },
+  {
+    "id": "dusk_blade",
+    "name_ru": "Сумеречный клинок",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/dusk_blade.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a dagger with a dark purple blade glowing at the edge against a setting crescent moon."
+  },
+  {
+    "id": "ricochet",
+    "name_ru": "Рикошет",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/ricochet.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a throwing star bouncing off a wall with a zigzag silver trail."
+  },
+  {
+    "id": "bravado",
+    "name_ru": "Кураж",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/bravado.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a tilted feathered rogue hat with a small dagger tucked in the band."
+  },
+  {
+    "id": "smoke_bomb",
+    "name_ru": "Дымовая шашка",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/smoke_bomb.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a round black bomb with a lit fuse releasing grey-magenta smoke."
+  },
+  {
+    "id": "lucky_break",
+    "name_ru": "Счастливый случай",
+    "group": "rogue",
+    "output": "Assets/SkillIcons/lucky_break.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: dark plum, rose magenta, smoky grey, polished silver. Subject: a gold coin flipping in the air with a four-leaf clover on its face."
+  },
+  {
+    "id": "awaken_rogue",
+    "name_ru": "Пробуждение: Повелитель теней",
+    "group": "awakening",
+    "output": "Assets/SkillIcons/awaken_rogue.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: radiant gold and white plus the class color, slightly more ornate and glowing than regular icons. Subject: a radiant fan of three shadow daggers spreading from a glowing golden hood; class color rose magenta."
+  },
+  {
+    "id": "stat_cun",
+    "name_ru": "Хитрость",
+    "group": "stat",
+    "output": "Assets/StatIcons/stat_cun.png",
+    "prompt": "Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on a 32x32 pixel grid and rendered at 512x512 so that every art pixel is a crisp 16x16 block. Hard pixel edges, no anti-aliasing, no blur, no smooth gradients (use 2-3 flat shading steps). 1-pixel dark outline (#1a1020) around the whole symbol, light source from the top-left. Limited palette, at most 16 colors. One centered symbol filling about 80% of the canvas. Fully transparent background. No frame, no border, no slot, no text, no letters, no numbers, no watermark. Palette: a single strong hue as stated, plus outline and highlight colors. Subject: a sly half-closed eye inside a diamond (single hue: rose magenta)."
   }
 ]

@@ -1,4 +1,5 @@
 HUD: {
+	InShadow: In the Shadows
 	TierOpenTitle: Skill tree tier {0} unlocked
 	TierOpenSubtitle: Spend the tree point in the Status window
 	XPGain: +{0} XP
@@ -13,6 +14,7 @@ HUD: {
 }
 
 Commands: {
+	Mode: calamity {0}, rogue class found {1}
 	Description: RPG mod debug (enable it in the config)
 	Disabled: /rpg is disabled. Turn on "Debug commands" in the mod config.
 	State: Lv {0}, XP {1}/{2}, class {3}, nodes {4} | hardmode {5}, mechs {6}, Moon Lord {7}
@@ -20,9 +22,225 @@ Commands: {
 
 Configs: {
 	RPGConfig: {
+		CunningDamage: {
+			Label: Cunning: maximum rogue damage
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		CunningSpeed: {
+			Label: Cunning: maximum rogue attack speed
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		RogueCunningGrowth: {
+			Label: Rogue: Cunning per level
+			Tooltip: Points per level (rounded down); requires Calamity.
+		}
+
+		RogueDexGrowth: {
+			Label: Rogue: Agility per level
+			Tooltip: Points per level (rounded down); requires Calamity.
+		}
+
+		RogueVitGrowth: {
+			Label: Rogue: Vitality per level
+			Tooltip: Points per level (rounded down); requires Calamity.
+		}
+
+		RogueRootDamage: {
+			Label: Rogue root: damage
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		RogueRootCrit: {
+			Label: Rogue root: critical strike chance
+			Tooltip: Rogue critical strike chance in percentage points (5 = +5%).
+		}
+
+		AssassinDamage: {
+			Label: Assassin: damage
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		AssassinCrit: {
+			Label: Assassin: critical strike chance
+			Tooltip: Rogue critical strike chance in percentage points (5 = +5%).
+		}
+
+		AssassinLifePenalty: {
+			Label: Assassin: max life penalty
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		TricksterAttackSpeed: {
+			Label: Trickster: attack speed
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		TricksterMoveSpeed: {
+			Label: Trickster: movement speed
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
+		TricksterDamagePenalty: {
+			Label: Trickster: damage penalty
+			Tooltip: Fraction (0.1 = 10%); requires Calamity.
+		}
+
 		DisplayName: RPG Settings
 
+		ShadowDelay: {
+			Label: Shadow preparation (ticks)
+			Tooltip: ""
+		}
+
+		AmbushDamage: {
+			Label: Ambush bonus damage
+			Tooltip: ""
+		}
+
+		ShadowDamage: {
+			Label: Shadow bonus damage
+			Tooltip: ""
+		}
+
+		JugglerSpeed: {
+			Label: Juggler attack speed per stack
+			Tooltip: ""
+		}
+
+		JugglerDuration: {
+			Label: Juggler stack duration (ticks)
+			Tooltip: ""
+		}
+
+		JugglerMaxStacks: {
+			Label: Juggler maximum stacks
+			Tooltip: ""
+		}
+
+		EvasionChance: {
+			Label: Evasion chance
+			Tooltip: ""
+		}
+
+		EvasionCooldown: {
+			Label: Evasion cooldown (ticks)
+			Tooltip: ""
+		}
+
+		ExecutionerDamage: {
+			Label: Executioner bonus damage
+			Tooltip: ""
+		}
+
+		ExecutionerThreshold: {
+			Label: Executioner target life threshold
+			Tooltip: ""
+		}
+
+		FirstBloodDamage: {
+			Label: First Blood damage per second
+			Tooltip: ""
+		}
+
+		FirstBloodDuration: {
+			Label: First Blood duration (ticks)
+			Tooltip: ""
+		}
+
+		DuskBladeCritMultiplier: {
+			Label: Dusk Blade critical damage multiplier
+			Tooltip: ""
+		}
+
+		DuskBladeArmorPenetration: {
+			Label: Dusk Blade armor penetration
+			Tooltip: ""
+		}
+
+		RicochetDamage: {
+			Label: Ricochet damage fraction
+			Tooltip: ""
+		}
+
+		RicochetRangeTiles: {
+			Label: Ricochet range (tiles)
+			Tooltip: ""
+		}
+
+		RicochetInterval: {
+			Label: Ricochet interval (ticks)
+			Tooltip: ""
+		}
+
+		BravadoMoveSpeed: {
+			Label: Bravado movement speed
+			Tooltip: ""
+		}
+
+		BravadoCrit: {
+			Label: Bravado critical strike chance (percentage points)
+			Tooltip: ""
+		}
+
+		SmokeBombImmunity: {
+			Label: Smoke Bomb immunity (ticks)
+			Tooltip: ""
+		}
+
+		SmokeBombDamage: {
+			Label: Smoke Bomb bonus damage
+			Tooltip: ""
+		}
+
+		LuckyBreakLuckPerStep: {
+			Label: Luck per Lucky Break step
+			Tooltip: ""
+		}
+
+		LuckyBreakChancePerStep: {
+			Label: Lucky Break dodge chance per step
+			Tooltip: ""
+		}
+
+		LuckyBreakMaxChance: {
+			Label: Lucky Break maximum bonus dodge chance
+			Tooltip: ""
+		}
+
+		LuckyBreakHeal: {
+			Label: Lucky Break healing fraction
+			Tooltip: ""
+		}
+
+		RogueAwakeningHits: {
+			Label: Rogue awakening hit interval
+			Tooltip: ""
+		}
+
+		TricksterAwakeningHits: {
+			Label: Trickster awakening hit interval
+			Tooltip: ""
+		}
+
+		RogueAwakeningDaggers: {
+			Label: Awakening daggers per fan
+			Tooltip: ""
+		}
+
+		RogueAwakeningDamage: {
+			Label: Awakening dagger damage fraction
+			Tooltip: ""
+		}
+
+		AssassinAwakeningDamage: {
+			Label: Assassin awakening dagger damage fraction
+			Tooltip: ""
+		}
+
 		Headers: {
+			Rogue: Rogue
 			Experience: Monster experience
 			LevelDifference: Level difference
 			Bosses: Bosses
@@ -243,6 +461,7 @@ Configs: {
 		}
 
 		DebugCommands: {
+			Mode: calamity {0}, rogue class found {1}
 			Label: Debug commands
 			Tooltip: Enables the /rpg chat command (level, XP, boss flags, reset)
 		}
@@ -264,6 +483,8 @@ Configs: {
 }
 
 UI: {
+	RogueInactive: Rogue inactive: Calamity Mod is required. Reset your skill tree to choose another class
+	TreeResetVanillaTooltip: Resets your class and skill tree
 	ColumnClass: Class
 	ColumnTier: Tier {0} · {1}
 	TierLabel: Tier {0} · {1}
@@ -300,6 +521,11 @@ UI: {
 }
 
 Classes: {
+	rogue: {
+		Name: Rogue
+		Growth: Per level: Cunning 0.55 · Agility 0.1 · Vitality 0.2
+	}
+
 	none.Name: No class
 
 	warrior: {
@@ -324,6 +550,13 @@ Classes: {
 }
 
 Stats: {
+	cun: {
+		Name: Cunning
+		Letter: C
+		Line1: +{0}% rogue damage
+		Line2: +{0}% rogue attack speed
+	}
+
 	str: {
 		Name: Strength
 		Letter: S
@@ -370,6 +603,81 @@ Stats: {
 Keybinds.ToggleCharacter.DisplayName: Character window
 
 Nodes: {
+	rogue: {
+		Name: Rogue
+		Effect: +5% rogue damage, +5% rogue critical strike chance
+	}
+
+	assassin: {
+		Name: Assassin
+		Effect: +12% rogue damage, +6% rogue critical strike chance; −10% max life
+	}
+
+	trickster: {
+		Name: Trickster
+		Effect: +15% rogue attack speed, +10% movement speed; −6% rogue damage
+	}
+
+	ambush: {
+		Name: Ambush
+		Effect: Your first rogue hit against an enemy at full life deals +50% damage
+	}
+
+	shadow: {
+		Name: Shadow
+		Effect: Unlocks In the Shadows: a hit from the shadows deals +25% damage and always critically strikes
+	}
+
+	juggler: {
+		Name: Juggler
+		Effect: Rogue hits grant a stack of +3% rogue attack speed for 3 s, up to 5 stacks
+	}
+
+	evasion: {
+		Name: Evasion
+		Effect: 10% chance to completely evade a hit; 5 s cooldown
+	}
+
+	executioner: {
+		Name: Executioner
+		Effect: +30% rogue damage against enemies below 30% life
+	}
+
+	first_blood: {
+		Name: First Blood
+		Effect: Ambush inflicts bleeding: 10% of hit damage per second for 5 s
+	}
+
+	vanish: {
+		Name: Vanish
+		Effect: Killing an enemy immediately restores In the Shadows
+	}
+
+	dusk_blade: {
+		Name: Dusk Blade
+		Effect: Hits from the shadows: critical strikes deal ×2.5 instead of ×2 damage and ignore 15 defense
+	}
+
+	ricochet: {
+		Name: Ricochet
+		Effect: At 5 stacks, hits release a shard at the nearest other enemy within 15 tiles for 40% damage, at most 3 times per second
+	}
+
+	bravado: {
+		Name: Bravado
+		Effect: At 5 stacks: +15% movement speed and +10% rogue critical strike chance
+	}
+
+	smoke_bomb: {
+		Name: Smoke Bomb
+		Effect: After evading: 1.5 s of invulnerability and +40% damage on your next rogue hit
+	}
+
+	lucky_break: {
+		Name: Lucky Break
+		Effect: +1% evasion chance per 20 Luck, up to +10%; evading heals 5% max life
+	}
+
 	warrior: {
 		Name: Warrior
 		Effect: +5% melee damage, +20 max life
@@ -672,6 +980,12 @@ Nodes: {
 }
 
 Awakening: {
+	rogue: {
+		Name: Lord of Shadows
+		Effect: Every 8th rogue hit releases a fan of 3 homing shadow daggers for 60% damage each
+		Bonus: Assassin: daggers for 100% damage · Trickster: every 5th hit
+	}
+
 	warrior: {
 		Name: Avatar of War
 		Effect: Hits build Fervor; when full, 8 s of +30% damage and +20% attack speed
@@ -723,6 +1037,11 @@ Items: {
 	}
 }
 
+Projectiles: {
+	ShadowDagger.DisplayName: Shadow Dagger
+	AwakeningBolt.DisplayName: Storm Eye
+}
+
 Awakening2: {
 	Fervor: Fervor
 	Awakened: Awakened: {0}!
@@ -732,5 +1051,3 @@ Awakening2: {
 	TreeReset: Your class and skill tree have been reset.
 	TreeResetRefund: Your class and skill tree have been reset. Your Awakening Stone has been returned.
 }
-
-Projectiles.AwakeningBolt.DisplayName: Storm Eye

@@ -22,7 +22,7 @@ public class RPGCommand : ModCommand
 {
     public override CommandType Type => CommandType.Chat;
     public override string Command => "rpg";
-    public override string Usage => "/rpg [level N | xp N | points | downed wof|mech|moonlord|all|none | reset]";
+    public override string Usage => "/rpg [level N | xp N | points | mode | downed wof|mech|moonlord|all|none | reset]";
     public override string Description => Language.GetTextValue("Mods.RPGMod.Commands.Description");
 
     public override void Action(CommandCaller caller, string input, string[] args)
@@ -46,6 +46,12 @@ public class RPGCommand : ModCommand
             case "xp" when args.Length > 1 && long.TryParse(args[1], out long xp):
                 rpg.GainXP(xp);
                 break;
+
+            case "mode":
+                caller.Reply(Language.GetTextValue("Mods.RPGMod.Commands.Mode",
+                    Systems.CalamityCompat.Enabled ? "on" : "off",
+                    Systems.CalamityCompat.RogueAvailable ? "yes" : "no"), Color.LightGreen);
+                return;
 
             case "points":
                 break; // просто покажем состояние ниже

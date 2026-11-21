@@ -4,6 +4,7 @@ namespace RPGMod.Common;
 public struct StatBonuses
 {
     public float MeleeDamage, MeleeSpeed;
+    public float RogueDamage, RogueSpeed;
     public float RangedDamage, MoveSpeed, AmmoSave;
     public float MagicDamage, ManaCost;
     public int MaxMana;

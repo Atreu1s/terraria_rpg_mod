@@ -11,6 +11,8 @@ namespace RPGMod.Content.Items;
 
 public class AwakeningStone : ModItem
 {
+    public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("CalamityMod");
+
     private const int EssenceCount = 3, GeodeCount = 10, GuardianCount = 3, FlashDust = 60;
 
     public override void SetDefaults()

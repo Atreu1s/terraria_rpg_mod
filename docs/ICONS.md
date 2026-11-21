@@ -1,6 +1,6 @@
 # Иконки RPG-мода: список
 
-Всего иконок: 74: 60 узлов древа, 4 пробуждения, 6 статов, 4 предмета. Тот же список лежит в `icons.json` для пакетной генерации.
+Всего иконок: 91: 75 узлов древа, 5 пробуждений, 7 статов, 4 предмета. Тот же список лежит в `icons.json` для пакетной генерации.
 
 Задание для Codex — в `PROMPT_CODEX.md` в корне комплекта.
 
@@ -16,6 +16,7 @@ Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on 
 - **Стрелок:** Palette: forest green, lime, brass yellow, wood brown.
 - **Маг:** Palette: violet, deep purple, arcane blue, white glow highlights.
 - **Призыватель:** Palette: teal, cyan, ghostly pale blue, dark slate.
+- **Разбойник (v2, только с Calamity):** Palette: dark plum, rose magenta, smoky grey, polished silver.
 - **Пробуждения:** Palette: radiant gold and white plus the class color, slightly more ornate and glowing than regular icons.
 - **Статы:** Palette: a single strong hue as stated, plus outline and highlight colors.
 - **Предметы:** Palette: free, readable as an in-game item sprite.
@@ -102,6 +103,26 @@ Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on 
 | `alpha` | Альфа | `Assets/SkillIcons/alpha.png` | a howling spirit wolf head wearing a small golden crown |
 | `sacrifice` | Жертва | `Assets/SkillIcons/sacrifice.png` | a teal spirit wisp shattering into pieces around a red heart |
 
+### Разбойник (v2, только с Calamity)
+
+| ID | Название | Файл | Что нарисовано (Subject) |
+| --- | --- | --- | --- |
+| `rogue` | Разбойник | `Assets/SkillIcons/rogue.png` | a hooded figure's shadowed face with two glinting eyes above a pair of crossed throwing daggers |
+| `assassin` | Убийца | `Assets/SkillIcons/assassin.png` | a curved silver dagger dripping a single rose-magenta drop |
+| `trickster` | Ловкач | `Assets/SkillIcons/trickster.png` | a spinning playing card with a small dagger stuck through it |
+| `ambush` | Засада | `Assets/SkillIcons/ambush.png` | a dagger thrusting out from a dark bush with two glowing eyes |
+| `shadow` | Тень | `Assets/SkillIcons/shadow.png` | a dark plum silhouette of a crouching figure dissolving into smoke |
+| `juggler` | Жонглёр | `Assets/SkillIcons/juggler.png` | three throwing knives arranged in a circular juggling arc |
+| `evasion` | Уклонение | `Assets/SkillIcons/evasion.png` | a blurred afterimage of a running figure with motion lines |
+| `executioner` | Палач | `Assets/SkillIcons/executioner.png` | a heavy hooded executioner's blade above a cracked skull |
+| `first_blood` | Первая кровь | `Assets/SkillIcons/first_blood.png` | a dagger tip with three falling crimson blood drops |
+| `vanish` | Исчезновение | `Assets/SkillIcons/vanish.png` | a puff of grey smoke with an empty hood fading inside it |
+| `dusk_blade` | Сумеречный клинок | `Assets/SkillIcons/dusk_blade.png` | a dagger with a dark purple blade glowing at the edge against a setting crescent moon |
+| `ricochet` | Рикошет | `Assets/SkillIcons/ricochet.png` | a throwing star bouncing off a wall with a zigzag silver trail |
+| `bravado` | Кураж | `Assets/SkillIcons/bravado.png` | a tilted feathered rogue hat with a small dagger tucked in the band |
+| `smoke_bomb` | Дымовая шашка | `Assets/SkillIcons/smoke_bomb.png` | a round black bomb with a lit fuse releasing grey-magenta smoke |
+| `lucky_break` | Счастливый случай | `Assets/SkillIcons/lucky_break.png` | a gold coin flipping in the air with a four-leaf clover on its face |
+
 ### Пробуждения
 
 | ID | Название | Файл | Что нарисовано (Subject) |
@@ -110,6 +131,7 @@ Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on 
 | `awaken_ranger` | Пробуждение: Око бури | `Assets/SkillIcons/awaken_ranger.png` | a storm eye with a lightning arrow bursting out of its pupil; class color green |
 | `awaken_mage` | Пробуждение: Архимаг | `Assets/SkillIcons/awaken_mage.png` | a floating crowned grimoire with an infinity rune on the cover; class color violet |
 | `awaken_summoner` | Пробуждение: Владыка духов | `Assets/SkillIcons/awaken_summoner.png` | a spectral crown with several spirits circling it; class color teal |
+| `awaken_rogue` | Пробуждение: Повелитель теней | `Assets/SkillIcons/awaken_rogue.png` | a radiant fan of three shadow daggers spreading from a glowing golden hood; class color rose magenta |
 
 ### Статы
 
@@ -121,6 +143,7 @@ Pixel art game icon in the style of 2D sandbox games like Terraria. Designed on 
 | `stat_spi` | Дух | `Assets/StatIcons/stat_spi.png` | a ghostly spirit flame, teal |
 | `stat_vit` | Выносливость | `Assets/StatIcons/stat_vit.png` | a heart with a small plus sign, orange-red |
 | `stat_luck` | Удача | `Assets/StatIcons/stat_luck.png` | a four-leaf clover on a gold coin, golden yellow |
+| `stat_cun` | Хитрость | `Assets/StatIcons/stat_cun.png` | a sly half-closed eye inside a diamond (single hue: rose magenta) |
 
 ### Предметы
 

@@ -61,13 +61,15 @@ public static class StatMath
     }
 
     /// <summary>Все бонусы статов, посчитанные из итоговых значений (используется и игрой, и UI).</summary>
-    public static StatBonuses Bonuses(int str, int dex, int intel, int spirit, int vit, int luck)
+    public static StatBonuses Bonuses(int str, int dex, int intel, int spirit, int vit, int luck, int cunning = 0)
     {
         var c = RPGConfig.Instance;
         int slots = (spirit >= c.SpiritSlot1 ? 1 : 0) + (spirit >= c.SpiritSlot2 ? 1 : 0) + (spirit >= c.SpiritSlot3 ? 1 : 0);
         return new StatBonuses
         {
             MeleeDamage = Soft(str, c.StrMeleeDamage),
+            RogueDamage = Systems.CalamityCompat.RogueAvailable ? Soft(cunning, c.CunningDamage) : 0f,
+            RogueSpeed = Systems.CalamityCompat.RogueAvailable ? Soft(cunning, c.CunningSpeed) : 0f,
             MeleeSpeed = Soft(str, c.StrMeleeSpeed),
             RangedDamage = Soft(dex, c.DexRangedDamage),
             MoveSpeed = Soft(dex, c.DexMoveSpeed),
